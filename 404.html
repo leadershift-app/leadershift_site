@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — LeaderShift</title>
+<meta name="description" content="The page you're looking for doesn't exist.">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-slate: #2C3E50;
+    --deep-slate-dark: #1A252F;
+    --warm-bronze: #B08D57;
+    --warm-bronze-light: #C9A66B;
+    --warm-stone: #C4B7A6;
+    --warm-stone-light: #D9CFC2;
+    --warm-stone-dark: #A89B8A;
+    --off-white: #F8F6F3;
+    --text-muted: #8A9AAA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--deep-slate-dark);
+    color: var(--off-white);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(26, 37, 47, 0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(176, 141, 87, 0.1);
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--off-white); letter-spacing: 0.04em; text-decoration: none; }
+  .nav-logo span { color: var(--warm-bronze); font-weight: 700; }
+
+  .error-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+  }
+
+  .error-code {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(5rem, 15vw, 10rem);
+    font-weight: 700;
+    color: rgba(176, 141, 87, 0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .error-container h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--off-white);
+    margin-bottom: 1rem;
+  }
+
+  .error-container p {
+    font-size: 1.05rem;
+    color: var(--warm-stone);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+  }
+
+  .error-link {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--warm-bronze);
+    color: var(--warm-bronze);
+    padding: 0.75rem 2rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .error-link:hover {
+    background: var(--warm-bronze);
+    color: var(--deep-slate-dark);
+  }
+
+  footer {
+    padding: 3rem 2rem;
+    background: var(--deep-slate-dark);
+    border-top: 1px solid rgba(196, 183, 166, 0.06);
+  }
+  .footer-inner { max-width: 720px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--warm-stone-dark); }
+  .footer-logo span { color: var(--warm-bronze); opacity: 0.6; }
+  .footer-legal { font-size: 0.7rem; color: rgba(138, 154, 170, 0.5); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Leader<span>Shift</span></a>
+</nav>
+
+<div class="error-container">
+  <div class="error-code">404</div>
+  <h1>Wrong turn, but you're not lost.</h1>
+  <p>The page you're looking for doesn't exist. Let's get you back on track.</p>
+  <a href="/" class="error-link">Back to Home</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Leader<span>Shift</span></div>
+    <span class="footer-legal">&copy; 2026 LeaderShift LLC &middot; Wyoming</span>
+  </div>
+</footer>
+
+</body>
+</html>

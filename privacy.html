@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — LeaderShift</title>
+<meta name="description" content="Privacy Policy for LeaderShift. Learn how we protect your data with on-device encryption, zero-knowledge architecture, and no employer access.">
+<meta property="og:title" content="Privacy Policy — LeaderShift">
+<meta property="og:description" content="Privacy Policy for LeaderShift. Learn how we protect your data with on-device encryption, zero-knowledge architecture, and no employer access.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leadershift.app/privacy.html">
+<meta property="og:site_name" content="LeaderShift">
+<meta property="og:image" content="https://leadershift.app/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy — LeaderShift">
+<meta name="twitter:description" content="Privacy Policy for LeaderShift. Learn how we protect your data with on-device encryption, zero-knowledge architecture, and no employer access.">
+<meta name="twitter:image" content="https://leadershift.app/images/og-image.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-slate: #2C3E50;
+    --deep-slate-dark: #1A252F;
+    --warm-bronze: #B08D57;
+    --warm-bronze-light: #C9A66B;
+    --warm-stone: #C4B7A6;
+    --warm-stone-light: #D9CFC2;
+    --warm-stone-dark: #A89B8A;
+    --off-white: #F8F6F3;
+    --text-muted: #8A9AAA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--deep-slate-dark);
+    color: var(--off-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(26, 37, 47, 0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(176, 141, 87, 0.1);
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--off-white); letter-spacing: 0.04em; text-decoration: none; }
+  .nav-logo span { color: var(--warm-bronze); font-weight: 700; }
+  .nav-back { font-size: 0.85rem; color: var(--warm-bronze); text-decoration: none; font-weight: 400; transition: color 0.3s; }
+  .nav-back:hover { color: var(--warm-bronze-light); }
+
+  /* Content */
+  .legal-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 8rem 2rem 5rem;
+  }
+
+  .legal-content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    color: var(--off-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(176, 141, 87, 0.15);
+  }
+
+  .legal-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--warm-stone-light);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--warm-stone);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-content p {
+    font-size: 0.95rem;
+    color: var(--warm-stone);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content ul li {
+    font-size: 0.95rem;
+    color: var(--warm-stone);
+    line-height: 1.75;
+    font-weight: 300;
+    padding-left: 1.25rem;
+    position: relative;
+    margin-bottom: 0.35rem;
+  }
+
+  .legal-content ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 5px;
+    height: 5px;
+    background: var(--warm-bronze);
+    opacity: 0.5;
+  }
+
+  .legal-content a {
+    color: var(--warm-bronze);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .legal-content a:hover {
+    color: var(--warm-bronze-light);
+  }
+
+  .legal-content strong {
+    color: var(--off-white);
+    font-weight: 500;
+  }
+
+  .info-block {
+    background: rgba(176, 141, 87, 0.05);
+    border-left: 2px solid rgba(176, 141, 87, 0.3);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-block p {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+  }
+
+  .info-block .label {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.15rem;
+  }
+
+  /* Data table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.88rem;
+  }
+
+  .data-table th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--warm-stone-light);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(176, 141, 87, 0.2);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  .data-table td {
+    padding: 0.6rem 1rem;
+    color: var(--warm-stone);
+    font-weight: 300;
+    border-bottom: 1px solid rgba(196, 183, 166, 0.06);
+  }
+
+  .highlight-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(196, 183, 166, 0.08);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight-box p {
+    margin-bottom: 0.5rem;
+  }
+
+  .crisis-box {
+    background: rgba(176, 141, 87, 0.08);
+    border: 1px solid rgba(176, 141, 87, 0.2);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .crisis-box p {
+    margin-bottom: 0.35rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: 3rem 2rem;
+    background: var(--deep-slate-dark);
+    border-top: 1px solid rgba(196, 183, 166, 0.06);
+  }
+  .footer-inner { max-width: 720px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--warm-stone-dark); }
+  .footer-logo span { color: var(--warm-bronze); opacity: 0.6; }
+  .footer-legal { font-size: 0.7rem; color: rgba(138, 154, 170, 0.5); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .legal-content { padding: 6rem 1.5rem 3rem; }
+    .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+    .data-table { font-size: 0.8rem; }
+    .data-table th, .data-table td { padding: 0.5rem 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Leader<span>Shift</span></a>
+  <a class="nav-back" href="/">&larr; Back to Home</a>
+</nav>
+
+<div class="legal-content">
+  <h1>Privacy Policy</h1>
+  <p class="legal-date">Last Updated: February 15, 2026 &middot; Effective: February 15, 2026</p>
+
+  <h2>Introduction</h2>
+  <p>LeaderShift provides confidential AI coaching for senior public safety leaders. We take your privacy seriously and are committed to protecting your personal information.</p>
+  <p>This Privacy Policy explains what information we collect, how we use it, who we share it with, your rights and choices, and how to contact us.</p>
+  <p><strong>By using LeaderShift, you agree to this Privacy Policy.</strong></p>
+
+  <h2>1. Information We Collect</h2>
+
+  <h3>A. Information You Provide</h3>
+
+  <div class="info-block">
+    <p class="label">Phone Number</p>
+    <p><strong>What:</strong> Your mobile phone number</p>
+    <p><strong>Why:</strong> Used for authentication via SMS one-time passcode</p>
+    <p><strong>Who Processes:</strong> Supabase (our authentication provider)</p>
+    <p><strong>Retention:</strong> Until you delete your account</p>
+  </div>
+
+  <div class="info-block">
+    <p class="label">Rank</p>
+    <p><strong>What:</strong> Your professional rank (Lieutenant, Captain, Chief, Sheriff, Superintendent)</p>
+    <p><strong>Why:</strong> Provides rank-appropriate coaching advice</p>
+    <p><strong>Storage:</strong> Stored locally on your device</p>
+    <p><strong>Retention:</strong> Until you change it or delete the app</p>
+  </div>
+
+  <div class="info-block">
+    <p class="label">Conversation Content</p>
+    <p><strong>What:</strong> Your messages to the AI coach and the coach's responses</p>
+    <p><strong>Why:</strong> To provide AI coaching services</p>
+    <p><strong>Storage:</strong> Encrypted on your device only</p>
+    <p><strong>Retention:</strong> Until you delete individual conversations or the app</p>
+  </div>
+
+  <h3>B. Information Automatically Collected</h3>
+  <ul>
+    <li><strong>Device Information:</strong> iOS version, app version, device model</li>
+    <li><strong>Network Information:</strong> IP address, approximate location (city/state from IP), ISP</li>
+    <li><strong>Usage Data:</strong> Conversation timestamps, messages per session, feature usage</li>
+    <li><strong>Technical Data:</strong> Error logs (crash reports), performance metrics</li>
+  </ul>
+
+  <h2>2. How We Use Your Information</h2>
+
+  <p><strong>Provide Services:</strong> Authenticate via SMS, send messages to Anthropic's Claude API for AI coaching, adapt advice to your rank, store conversations encrypted on your device.</p>
+
+  <p><strong>Improve Services:</strong> Analyze usage patterns (aggregated, anonymous), fix bugs, develop new features.</p>
+
+  <p><strong>Security &amp; Compliance:</strong> Detect and prevent abuse, respond to legal requests, ensure reliability.</p>
+
+  <div class="highlight-box">
+    <p><strong>We DO NOT:</strong></p>
+    <ul>
+      <li>Sell your data</li>
+      <li>Use your conversations for advertising</li>
+      <li>Share your information with your employer or agency</li>
+      <li>Train AI models on your conversations (without explicit opt-in)</li>
+    </ul>
+  </div>
+
+  <h2>2b. In-App Feedback Collection</h2>
+
+  <p>LeaderShift may prompt you to provide feedback about your experience.</p>
+
+  <p><strong>What We Collect:</strong> Star ratings, thumbs up/down on responses, optional text feedback (200 characters max), usage milestones, professional impact assessments.</p>
+
+  <p><strong>How It Works:</strong> All feedback is stored encrypted on your device until you choose to send it. You control when feedback is shared. Each prompt includes explicit opt-in. You can dismiss or opt out in Settings.</p>
+
+  <p><strong>How We Use It:</strong> Improve coaching quality, identify bugs, prioritize features, measure impact.</p>
+
+  <p>Feedback is not shared with third parties, not linked to your conversations, and only aggregated anonymous statistics are used publicly.</p>
+
+  <h2>3. How We Share Your Information</h2>
+
+  <h3>A. Service Providers</h3>
+
+  <div class="info-block">
+    <p class="label">Supabase</p>
+    <p><strong>What:</strong> Phone number, authentication tokens</p>
+    <p><strong>Why:</strong> SMS authentication</p>
+    <p><strong>Location:</strong> United States</p>
+  </div>
+
+  <div class="info-block">
+    <p class="label">Cloudflare</p>
+    <p><strong>What:</strong> IP address, conversation content (in transit), device info</p>
+    <p><strong>Why:</strong> Hosts our API that routes messages to Anthropic</p>
+    <p><strong>Retention:</strong> Real-time tail (under 1 hour); persistent logs disabled</p>
+  </div>
+
+  <div class="info-block">
+    <p class="label">Anthropic</p>
+    <p><strong>What:</strong> Your messages (prompts) and coaching responses</p>
+    <p><strong>Why:</strong> Provides AI coaching via Claude API</p>
+    <p><strong>Retention:</strong> Per Anthropic's data retention policy</p>
+  </div>
+
+  <h3>B. Legal Requirements</h3>
+  <p>We may disclose your information if required by law: court orders, subpoenas, law enforcement requests with valid legal process, or to prevent imminent harm.</p>
+  <p>If we receive a legal request, we will notify you (unless legally prohibited), challenge overly broad requests, and provide only the minimum information required.</p>
+
+  <h3>C. Business Transfers</h3>
+  <p>If LeaderShift is acquired or merged, your information may be transferred. You will be notified via email or app notification.</p>
+
+  <div class="highlight-box">
+    <p><strong>We Do NOT Share With:</strong></p>
+    <ul>
+      <li>Your employer or police agency</li>
+      <li>Advertisers or marketing companies</li>
+      <li>Data brokers</li>
+      <li>Social media platforms</li>
+      <li>Any third party for their own purposes</li>
+    </ul>
+  </div>
+
+  <h2>4. Data Storage &amp; Security</h2>
+
+  <h3>On Your Device</h3>
+  <ul>
+    <li>All conversations encrypted with AES-256-GCM</li>
+    <li>Encryption key stored in iOS Secure Enclave (Keychain)</li>
+    <li>Database excluded from iCloud backup</li>
+    <li>Delete individual conversations anytime or delete the entire app to erase all local data</li>
+  </ul>
+
+  <h3>In Transit</h3>
+  <ul>
+    <li>TLS 1.3 encryption for all network requests</li>
+    <li>Certificate pinning (prevents man-in-the-middle attacks)</li>
+  </ul>
+
+  <h3>On Our Servers</h3>
+  <ul>
+    <li>We do not store conversation content on our servers</li>
+    <li>IP address in Cloudflare logs: real-time only, not persisted</li>
+    <li>Error logs: auto-deleted after 7 days (metadata only)</li>
+  </ul>
+
+  <h2>5. Data Retention</h2>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Data Type</th><th>Retention</th><th>Location</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Conversations</td><td>Until you delete</td><td>Your device</td></tr>
+      <tr><td>Phone number</td><td>Until account deletion</td><td>Supabase</td></tr>
+      <tr><td>IP address</td><td>Real-time only</td><td>Cloudflare</td></tr>
+      <tr><td>Error logs</td><td>7 days</td><td>Our servers</td></tr>
+      <tr><td>Anthropic data</td><td>Per their policy</td><td>Anthropic servers</td></tr>
+    </tbody>
+  </table>
+
+  <p>We cannot retroactively delete data from third-party logs. Deleted conversations on your device are irrecoverable. Account deletion does not delete past messages sent to Anthropic.</p>
+
+  <h2>6. Your Rights &amp; Choices</h2>
+  <ul>
+    <li><strong>Access:</strong> Request what data we have about you (minimal)</li>
+    <li><strong>Delete Conversations:</strong> Tap and hold any conversation, then Delete</li>
+    <li><strong>Delete Account:</strong> Settings, then Delete Account (removes phone number from Supabase and local data)</li>
+    <li>Account deletion does not remove data from Anthropic (contact them directly)</li>
+  </ul>
+
+  <h2>7. Children's Privacy</h2>
+  <p><strong>LeaderShift is not for users under 18.</strong> We do not knowingly collect information from children. If we discover we have, we will delete it immediately. Contact <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a> if you believe a child provided information to us.</p>
+
+  <h2>8. State-Specific Privacy Rights</h2>
+
+  <h3>California Residents (CCPA / CPRA)</h3>
+  <ul>
+    <li><strong>Right to Know:</strong> What personal information we collect</li>
+    <li><strong>Right to Delete:</strong> Request deletion (with limitations above)</li>
+    <li><strong>Right to Opt-Out of Sale:</strong> We don't sell your data</li>
+    <li><strong>Right to Non-Discrimination:</strong> We won't treat you differently for exercising rights</li>
+  </ul>
+  <p>Exercise rights via email: <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a> or in-app: Settings, then Privacy Request.</p>
+
+  <h3>European Union Residents (GDPR)</h3>
+  <ul>
+    <li><strong>Access:</strong> Request a copy of your data</li>
+    <li><strong>Rectification:</strong> Correct inaccurate data</li>
+    <li><strong>Erasure:</strong> "Right to be forgotten"</li>
+    <li><strong>Portability:</strong> Receive data in machine-readable format</li>
+    <li><strong>Object:</strong> Object to certain processing</li>
+    <li><strong>Restrict:</strong> Limit how we use your data</li>
+  </ul>
+  <p>Data transfers to the United States are protected by Standard Contractual Clauses (SCCs). Exercise rights at <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a> (response time: 30 days).</p>
+
+  <h3>Other States</h3>
+  <p>Nevada, Virginia, Colorado, Connecticut, Utah residents have similar rights. Contact <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a>.</p>
+
+  <h2>9. International Users</h2>
+  <p>LeaderShift is based in the United States. If you use LeaderShift from outside the US, your data will be transferred to and processed in the US. US privacy laws may differ from your country. By using LeaderShift, you consent to this transfer.</p>
+
+  <h2>10. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy to reflect changes in practices, legal requirements, or new features. Material changes will receive 30 days advance notice via email or in-app notification.</p>
+
+  <h2>11. Security Safeguards</h2>
+  <ul>
+    <li>AES-256-GCM encryption</li>
+    <li>TLS 1.3 for network requests</li>
+    <li>iOS Keychain for key storage</li>
+    <li>Database excluded from iCloud backup</li>
+    <li>Limited employee access, regular security audits, incident response plan</li>
+  </ul>
+  <p>No system is 100% secure. While we use industry-standard protections, we cannot guarantee absolute security.</p>
+
+  <h2>12. What This App Is NOT</h2>
+  <div class="highlight-box">
+    <ul>
+      <li>Not medical care or mental health treatment</li>
+      <li>Not a substitute for professional counseling</li>
+      <li>Not emergency services (call 911 for emergencies)</li>
+      <li>Not legal advice</li>
+      <li>Not subject to HIPAA</li>
+    </ul>
+    <p style="margin-top: 0.75rem;"><strong>LeaderShift IS:</strong> Professional coaching, confidential (not shared with employer), AI-assisted (not human therapist).</p>
+  </div>
+
+  <h2>13. Crisis Resources</h2>
+  <div class="crisis-box">
+    <p><strong>911:</strong> Immediate emergencies</p>
+    <p><strong>988 Lifeline:</strong> Suicide &amp; Crisis Lifeline</p>
+    <p><strong>COPLINE:</strong> 1-800-267-5463 (Law enforcement peer support)</p>
+    <p><strong>Crisis Text Line:</strong> Text HOME to 741741</p>
+  </div>
+  <p>LeaderShift is not monitored 24/7 and is not for crisis intervention.</p>
+
+  <h2>14. Contact Us</h2>
+  <p><strong>Privacy Questions or Requests:</strong> <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a></p>
+  <p><strong>Mail:</strong> LeaderShift, LLC<br>30 North Gould Street, Ste N<br>Sheridan, WY 82801</p>
+  <p>We aim to respond within 7 business days.</p>
+
+  <h2>15. Plain Language Summary</h2>
+  <div class="highlight-box">
+    <p><strong>We collect:</strong> Phone number, rank, conversations</p>
+    <p><strong>We store:</strong> Encrypted on your device</p>
+    <p><strong>We share with:</strong> Supabase (auth), Cloudflare (routing), Anthropic (AI)</p>
+    <p><strong>We don't:</strong> Sell data, share with employers, use for ads</p>
+    <p><strong>You can:</strong> Delete anytime, request info</p>
+    <p><strong>Limitations:</strong> Can't delete from Anthropic retroactively</p>
+    <p style="margin-top: 0.5rem;">Questions? <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Leader<span>Shift</span></div>
+    <span class="footer-legal">&copy; 2026 LeaderShift LLC &middot; Wyoming</span>
+  </div>
+</footer>
+
+</body>
+</html>
