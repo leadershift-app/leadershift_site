@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LeaderShift — Serving Leaders Who Serve</title>
-<meta name="description" content="LeaderShift is an AI-powered leadership coaching app built for public safety professionals. Private, rank-aware, and always available.">
+<meta name="description" content="LeaderShift is an AI-powered peer support and professional development app built for public safety professionals. Private, rank-aware, and always available.">
 <meta property="og:title" content="LeaderShift — Serving Leaders Who Serve">
-<meta property="og:description" content="An always-on career companion built for public safety professionals. Private. Rank-aware. In your pocket when it matters most.">
+<meta property="og:description" content="An always-available digital partner built by public safety professionals, for public safety leaders. Personal. Private. Rank-aware.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://leadershift.app">
 <meta property="og:site_name" content="LeaderShift">
 <meta property="og:image" content="https://leadershift.app/images/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LeaderShift — Serving Leaders Who Serve">
-<meta name="twitter:description" content="An always-on career companion built for public safety professionals. Private. Rank-aware. In your pocket when it matters most.">
+<meta name="twitter:description" content="An always-available digital partner built by public safety professionals, for public safety leaders. Personal. Private. Rank-aware.">
 <meta name="twitter:image" content="https://leadershift.app/images/og-image.png">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -79,12 +79,21 @@
   }
 
   .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.6rem;
     font-weight: 600;
     color: var(--off-white);
     letter-spacing: 0.04em;
     text-decoration: none;
+  }
+
+  .nav-logo img {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
   }
 
   .nav-logo span {
@@ -142,6 +151,15 @@
     height: 800px;
     background: radial-gradient(circle, rgba(176, 141, 87, 0.06) 0%, transparent 70%);
     pointer-events: none;
+  }
+
+  .hero-logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    animation: fadeSlideUp 0.8s ease both;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
   .hero-badge {
@@ -790,10 +808,20 @@
   }
 
   .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--warm-stone-dark);
+  }
+
+  .footer-logo img {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    opacity: 0.6;
   }
 
   .footer-logo span {
@@ -930,26 +958,28 @@
 <!-- NAVIGATION -->
 <nav>
   <div>
-    <a class="nav-logo" href="#">Leader<span>Shift</span></a>
+    <a class="nav-logo" href="#"><img src="images/favicon-192x192.png" alt="LeaderShift badge">Leader<span>Shift</span></a>
   </div>
   <span class="nav-tagline">Serving Leaders Who Serve</span>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
+  <img src="images/favicon-192x192.png" alt="LeaderShift badge" class="hero-logo">
+
   <div class="hero-badge">
     <span class="dot"></span>
-    Launching February 2026
+    Built by Public Safety Professionals
   </div>
 
   <h1>Your <em>Ride-Along</em> for the Road Ahead</h1>
 
   <p class="hero-sub">
-    An always-on career companion built for public safety professionals.
-    Private. Rank-aware. In your pocket when it matters most.
+    An always-available digital partner built by public safety professionals,
+    for public safety leaders. Personal. Private. Rank-aware.
   </p>
 
-  <p class="signup-note">No department access. No data sharing. Ever.</p>
+  <p class="signup-note">Outside of department control. On your personal device. Encrypted.</p>
 
   <div class="scroll-indicator">
     <span>Explore</span>
@@ -1014,12 +1044,12 @@
   <div class="ridealong-inner">
     <div class="ridealong-content">
       <p class="section-label" style="text-align: left;">Built for the Job</p>
-      <h2>A partner who <em>gets the job</em> and protects your privacy doing it.</h2>
+      <h2>A digital partner that <em>gets the job</em> and protects your privacy doing it.</h2>
       <p>
         LeaderShift is built with <strong>cultural fluency</strong>, grounded in the understanding that a Captain navigates differently than a Sergeant, that department politics shape every career move, and that seeking help shouldn't risk your reputation.
       </p>
       <p>
-        Think of it as the trusted advisor you'd want riding with you. Someone who understands rank, respects the weight of the badge, and helps you think through what's next. <strong>Career progression, daily decision support, and leadership growth</strong> that is always available and always private.
+        Think of it as a trusted ride-along for your career. Built to understand rank, respect the weight of the badge, and help you think through what's next. <strong>Career progression, daily decision support, and leadership growth</strong> that is always available and always private.
       </p>
     </div>
 
@@ -1027,7 +1057,7 @@
       <div class="phone-glow"></div>
       <div class="phone-frame">
         <div class="phone-screen">
-          <img src="images/coaching-screenshot.png" alt="LeaderShift coaching conversation screenshot">
+          <img src="images/peer-support-screenshot.png" alt="LeaderShift peer support conversation screenshot">
         </div>
       </div>
     </div>
@@ -1052,7 +1082,7 @@
     <div class="capability-card">
       <div class="capability-icon">&#9672;</div>
       <h3>Decision Support</h3>
-      <p>Work through complex personnel decisions, department politics, and leadership challenges with a partner who understands the context and the stakes.</p>
+      <p>Work through complex personnel decisions, department politics, and leadership challenges with a digital partner that understands the context and the stakes.</p>
     </div>
 
     <div class="capability-card">
@@ -1073,7 +1103,7 @@
 <section class="quote-section">
   <div class="section-divider"></div>
   <blockquote>
-    A digital partner who understands your world and is always available to collaborate, giving you the confidence to speak effectively to everyone from rookies on patrol to senior leadership and the public at large.
+    A digital partner that understands your world and is always available to collaborate, giving you the confidence to speak effectively to everyone from rookies on patrol to senior leadership and the public at large.
   </blockquote>
   <p class="quote-attribution">The LeaderShift Mission</p>
 </section>
@@ -1088,7 +1118,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">Leader<span>Shift</span></div>
+    <div class="footer-logo"><img src="images/favicon-192x192.png" alt="LeaderShift badge">Leader<span>Shift</span></div>
     <span class="footer-tagline">Serving leaders who serve.</span>
     <div class="footer-links">
       <a href="terms.html" class="footer-link">Terms of Service</a>

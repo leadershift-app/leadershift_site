@@ -1,6 +1,6 @@
 # LeaderShift Marketing Site
 
-Static marketing and legal site for the LeaderShift iOS app (AI leadership coaching for public safety professionals). Hosted on GitHub Pages at leadershift.app.
+Static marketing and legal site for the LeaderShift iOS app (AI-powered peer support and professional development for public safety professionals). Hosted on GitHub Pages at leadershift.app.
 
 ## Key Info
 
@@ -38,6 +38,39 @@ Push to `main` branch. GitHub Pages deploys automatically. No build step.
 - Favicon: `images/favicon-32x32.png` (32x32), `images/apple-touch-icon.png` (180x180)
 - Legal pages link back to home with `← Back to Home` nav pattern.
 - Footer on legal pages: logo + copyright only. Footer on index: logo, tagline, legal links, copyright.
+
+## Language: Legal Terminology (Critical)
+
+**Never use "coaching" to describe what LeaderShift does.** The product operates under legally protected frameworks of peer-to-peer counseling and professional development, not coaching. This distinction has legal standing and must be maintained across all copy, marketing, legal pages, and code comments.
+
+**Approved terms** (use these consistently):
+- Peer support / peer-to-peer support
+- Peer counseling / peer-to-peer counseling
+- Professional development support / professional development partner
+- Digital peer support partner
+- Privileged communication / professional counseling
+- Peer-to-peer discussion
+- Expert-trained peer support
+
+**Never use:**
+- "Coaching" or "coach" in any context describing LeaderShift's service
+- "AI coach" or "leadership coach"
+- "Coaching session" or "coaching platform"
+- "AI chat" or "chatbot" (use "conversational AI tool", "digital partner", or similar)
+- "Always on" (use "always available" instead)
+- "Companion" as a standalone descriptor (use "digital partner")
+
+**Personification rules:**
+- Never refer to the app as a person or use "who" when describing LeaderShift. Use "that" instead.
+- Never use "Someone" or "advisor" to describe the app. It is a tool, not a person.
+- Always call it "digital partner", never just "partner" alone.
+
+**Identity and positioning:**
+- Always emphasize: built BY public safety professionals, FOR public safety leaders.
+- Emphasize personal ownership. The app is "yours alone", "outside of department control".
+- Use "No department access" sparingly. Prefer "outside of department control" to emphasize user ownership over institutional exclusion.
+
+When describing the app, frame it as a peer support and professional development tool, not a coaching product. The peer counseling and privileged communication framing carries stronger legal protections.
 
 ## Brand Voice
 
