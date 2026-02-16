@@ -933,7 +933,6 @@
     <a class="nav-logo" href="#">Leader<span>Shift</span></a>
   </div>
   <span class="nav-tagline">Serving Leaders Who Serve</span>
-  <a href="#signup" class="nav-cta">Get Early Access</a>
 </nav>
 
 <!-- HERO -->
@@ -950,12 +949,7 @@
     Private. Rank-aware. In your pocket when it matters most.
   </p>
 
-  <form class="signup-container" id="signup" onsubmit="handleSignup(event, this)">
-    <input type="email" name="email" class="signup-input" placeholder="Enter your email for early access" required>
-    <button type="submit" class="signup-btn">Join the Waitlist</button>
-  </form>
   <p class="signup-note">No department access. No data sharing. Ever.</p>
-  <p id="signup-msg-hero"></p>
 
   <div class="scroll-indicator">
     <span>Explore</span>
@@ -1088,15 +1082,6 @@
 <section class="final-cta">
   <p class="section-label">Coming Soon</p>
   <h2>The shift starts <em>with you.</em></h2>
-  <p>
-    Be among the first public safety professionals to access LeaderShift.
-    Join the waitlist, and know that your information stays between us.
-  </p>
-  <form class="final-signup" onsubmit="handleSignup(event, this)">
-    <input type="email" name="email" class="signup-input" placeholder="Your email address" required>
-    <button type="submit" class="signup-btn">Get Early Access</button>
-  </form>
-  <p id="signup-msg-footer"></p>
   <span class="launch-date">Launching February 2026</span>
 </section>
 
@@ -1114,49 +1099,5 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const supabase = window.supabase.createClient(
-    'https://pgcmsggvvknmmiuasjwk.supabase.co',
-    'sb_publishable_Zk4ckP9TZem03upcF_zfZA_dpMUxJiy'
-  );
-
-  async function handleSignup(e, form) {
-    e.preventDefault();
-    var btn = form.querySelector('.signup-btn');
-    var input = form.querySelector('input[name="email"]');
-    var msgEl = form.closest('.hero')
-      ? document.getElementById('signup-msg-hero')
-      : document.getElementById('signup-msg-footer');
-    var email = input.value.trim();
-
-    if (!email) return;
-
-    btn.disabled = true;
-    btn.textContent = 'Submitting...';
-    msgEl.textContent = '';
-    msgEl.className = '';
-
-    var result = await supabase.from('waitlist').insert({ email: email });
-
-    if (result.error) {
-      if (result.error.code === '23505') {
-        msgEl.textContent = "You're already on the roster. We'll reach out before launch.";
-        msgEl.className = 'signup-success';
-        input.value = '';
-      } else {
-        msgEl.textContent = 'Something went wrong. Try again, or reach us at support@leadershift.app.';
-        msgEl.className = 'signup-error';
-      }
-    } else {
-      msgEl.textContent = 'Success. We will be in touch when your LeaderShift partner is ready.';
-      msgEl.className = 'signup-success';
-      input.value = '';
-    }
-
-    btn.disabled = false;
-    btn.textContent = form.closest('.hero') ? 'Join the Waitlist' : 'Get Early Access';
-  }
-</script>
 </body>
 </html>
