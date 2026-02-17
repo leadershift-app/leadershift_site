@@ -249,7 +249,7 @@
 
 <div class="legal-content">
   <h1>Privacy Policy</h1>
-  <p class="legal-date">Last Updated: February 15, 2026 &middot; Effective: February 15, 2026</p>
+  <p class="legal-date">Last Updated: February 17, 2026 &middot; Effective: February 17, 2026</p>
 
   <h2>Introduction</h2>
   <p>LeaderShift provides confidential AI-powered peer support and professional development for senior public safety leaders. We take your privacy seriously and are committed to protecting your personal information.</p>
@@ -270,7 +270,7 @@
 
   <div class="info-block">
     <p class="label">Rank</p>
-    <p><strong>What:</strong> Your professional rank (Lieutenant, Captain, Chief, Sheriff, Superintendent)</p>
+    <p><strong>What:</strong> Your professional rank (e.g., Officer, Sergeant, Lieutenant, Captain, Command Staff, Chief, Correctional Officer, Warden, Professional Staff, Director)</p>
     <p><strong>Why:</strong> Provides rank-appropriate professional development guidance</p>
     <p><strong>Storage:</strong> Stored locally on your device</p>
     <p><strong>Retention:</strong> Until you change it or delete the app</p>
@@ -286,10 +286,8 @@
 
   <h3>B. Information Automatically Collected</h3>
   <ul>
-    <li><strong>Device Information:</strong> iOS version, app version, device model</li>
-    <li><strong>Network Information:</strong> IP address, approximate location (city/state from IP), ISP</li>
-    <li><strong>Usage Data:</strong> Conversation timestamps, messages per session, feature usage</li>
-    <li><strong>Technical Data:</strong> Error logs (crash reports), performance metrics</li>
+    <li><strong>Usage Data (Stored Locally):</strong> Conversation timestamps and number of messages per session. This data is stored on your device only and is not transmitted to our servers.</li>
+    <li><strong>Error Reports (Debug Builds Only):</strong> App version may be included in error reports to help us fix issues. Error logs are collected in debug/simulator builds only and are not automatically collected in production.</li>
   </ul>
 
   <h2>2. How We Use Your Information</h2>
@@ -316,7 +314,7 @@
 
   <p><strong>What We Collect:</strong> Star ratings, thumbs up/down on responses, optional text feedback (200 characters max), usage milestones, professional impact assessments.</p>
 
-  <p><strong>How It Works:</strong> All feedback is stored encrypted on your device until you choose to send it. You control when feedback is shared. Each prompt includes explicit opt-in. You can dismiss or opt out in Settings.</p>
+  <p><strong>How It Works:</strong> All feedback is stored encrypted on your device until you choose to send it. You control when feedback is shared. Each prompt includes explicit opt-in. You can permanently dismiss individual feedback types (milestone surveys, impact surveys) by tapping "Not Now" or "Skip."</p>
 
   <p><strong>How We Use It:</strong> Improve support quality, identify bugs, prioritize features, measure impact.</p>
 
@@ -335,9 +333,16 @@
 
   <div class="info-block">
     <p class="label">Cloudflare</p>
-    <p><strong>What:</strong> IP address, conversation content (in transit), device info</p>
+    <p><strong>What:</strong> Conversation content (in transit); IP addresses may be processed as part of normal infrastructure operations</p>
     <p><strong>Why:</strong> Hosts our API that routes messages to Anthropic</p>
-    <p><strong>Retention:</strong> Real-time tail (under 1 hour); persistent logs disabled</p>
+    <p><strong>Retention:</strong> Real-time tail (under 1 hour); persistent logs disabled. We do not log or persist IP addresses ourselves.</p>
+  </div>
+
+  <div class="info-block">
+    <p class="label">RevenueCat</p>
+    <p><strong>What:</strong> Anonymous user ID, purchase history, subscription status</p>
+    <p><strong>Why:</strong> Manages subscription purchases and entitlements</p>
+    <p><strong>Location:</strong> United States</p>
   </div>
 
   <div class="info-block">
@@ -377,8 +382,7 @@
 
   <h3>In Transit</h3>
   <ul>
-    <li>TLS 1.3 encryption for all network requests</li>
-    <li>Certificate pinning (prevents man-in-the-middle attacks)</li>
+    <li>TLS encryption for all network requests</li>
   </ul>
 
   <h3>On Our Servers</h3>
@@ -397,8 +401,8 @@
     <tbody>
       <tr><td>Conversations</td><td>Until you delete</td><td>Your device</td></tr>
       <tr><td>Phone number</td><td>Until account deletion</td><td>Supabase</td></tr>
-      <tr><td>IP address</td><td>Real-time only</td><td>Cloudflare</td></tr>
       <tr><td>Error logs</td><td>7 days</td><td>Our servers</td></tr>
+      <tr><td>Subscription data</td><td>Until account deletion</td><td>RevenueCat</td></tr>
       <tr><td>Anthropic data</td><td>Per their policy</td><td>Anthropic servers</td></tr>
     </tbody>
   </table>
@@ -414,7 +418,7 @@
   </ul>
 
   <h2>7. Children's Privacy</h2>
-  <p><strong>LeaderShift is not for users under 18.</strong> We do not knowingly collect information from children. If we discover we have, we will delete it immediately. Contact <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a> if you believe a child provided information to us.</p>
+  <p><strong>LeaderShift is not for users under 18.</strong> We do not knowingly collect information from children. If we discover we have, we will delete it immediately. Contact <a href="mailto:support@leadershift.app">support@leadershift.app</a> if you believe a child provided information to us.</p>
 
   <h2>8. State-Specific Privacy Rights</h2>
 
@@ -425,7 +429,7 @@
     <li><strong>Right to Opt-Out of Sale:</strong> We don't sell your data</li>
     <li><strong>Right to Non-Discrimination:</strong> We won't treat you differently for exercising rights</li>
   </ul>
-  <p>Exercise rights via email: <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a> or in-app: Settings, then Privacy Request.</p>
+  <p>Exercise rights via email: <a href="mailto:support@leadershift.app">support@leadershift.app</a>.</p>
 
   <h3>European Union Residents (GDPR)</h3>
   <ul>
@@ -436,10 +440,10 @@
     <li><strong>Object:</strong> Object to certain processing</li>
     <li><strong>Restrict:</strong> Limit how we use your data</li>
   </ul>
-  <p>Data transfers to the United States are protected by Standard Contractual Clauses (SCCs). Exercise rights at <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a> (response time: 30 days).</p>
+  <p>Data transfers to the United States are protected by Standard Contractual Clauses (SCCs). Exercise rights at <a href="mailto:support@leadershift.app">support@leadershift.app</a> (response time: 30 days).</p>
 
   <h3>Other States</h3>
-  <p>Nevada, Virginia, Colorado, Connecticut, Utah residents have similar rights. Contact <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a>.</p>
+  <p>Nevada, Virginia, Colorado, Connecticut, Utah residents have similar rights. Contact <a href="mailto:support@leadershift.app">support@leadershift.app</a>.</p>
 
   <h2>9. International Users</h2>
   <p>LeaderShift is based in the United States. If you use LeaderShift from outside the US, your data will be transferred to and processed in the US. US privacy laws may differ from your country. By using LeaderShift, you consent to this transfer.</p>
@@ -450,7 +454,7 @@
   <h2>11. Security Safeguards</h2>
   <ul>
     <li>AES-256-GCM encryption</li>
-    <li>TLS 1.3 for network requests</li>
+    <li>TLS encryption for network requests</li>
     <li>iOS Keychain for key storage</li>
     <li>Database excluded from iCloud backup</li>
     <li>Limited employee access, regular security audits, incident response plan</li>
@@ -479,19 +483,19 @@
   <p>LeaderShift is not monitored 24/7 and is not for crisis intervention.</p>
 
   <h2>14. Contact Us</h2>
-  <p><strong>Privacy Questions or Requests:</strong> <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a></p>
-  <p><strong>Mail:</strong> LeaderShift, LLC<br>30 North Gould Street, Ste N<br>Sheridan, WY 82801</p>
+  <p><strong>Privacy Questions or Requests:</strong> <a href="mailto:support@leadershift.app">support@leadershift.app</a></p>
+  <p><strong>Mail:</strong> LeaderShift, Inc.<br>30 North Gould Street, #49085<br>Sheridan, WY 82801</p>
   <p>We aim to respond within 7 business days.</p>
 
   <h2>15. Plain Language Summary</h2>
   <div class="highlight-box">
     <p><strong>We collect:</strong> Phone number, rank, conversations</p>
     <p><strong>We store:</strong> Encrypted on your device</p>
-    <p><strong>We share with:</strong> Supabase (auth), Cloudflare (routing), Anthropic (AI)</p>
+    <p><strong>We share with:</strong> Supabase (auth), Cloudflare (routing), Anthropic (AI), RevenueCat (subscriptions)</p>
     <p><strong>We don't:</strong> Sell data, share with employers, use for ads</p>
     <p><strong>You can:</strong> Delete anytime, request info</p>
     <p><strong>Limitations:</strong> Can't delete from Anthropic retroactively</p>
-    <p style="margin-top: 0.5rem;">Questions? <a href="mailto:privacy@leadershift.app">privacy@leadershift.app</a></p>
+    <p style="margin-top: 0.5rem;">Questions? <a href="mailto:support@leadershift.app">support@leadershift.app</a></p>
   </div>
 </div>
 
