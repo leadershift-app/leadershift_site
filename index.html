@@ -136,7 +136,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 8rem 2rem 4rem;
+    padding: 8rem 2rem 8rem;
     position: relative;
     overflow: hidden;
   }
@@ -898,7 +898,7 @@
     }
 
     .hero {
-      padding: 7rem 1.5rem 4rem;
+      padding: 7rem 1.5rem 7rem;
     }
 
     .signup-container,
@@ -949,6 +949,22 @@
 
     .footer-links {
       justify-content: center;
+    }
+  }
+
+  /* Short viewports (laptops) - ensure scroll indicator doesn't overlap hero content */
+  @media (max-height: 750px) {
+    .hero {
+      min-height: auto;
+      padding-bottom: 6rem;
+    }
+
+    .scroll-indicator {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+      margin-top: 2.5rem;
     }
   }
 </style>
