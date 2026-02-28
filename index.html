@@ -4,1132 +4,1721 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LeaderShift — Serving Leaders Who Serve</title>
-<meta name="description" content="LeaderShift is an AI-powered peer support and professional development app built for public safety professionals. Private, rank-aware, and always available.">
-<meta property="og:title" content="LeaderShift — Serving Leaders Who Serve">
-<meta property="og:description" content="An always-available digital partner built by public safety professionals, for public safety leaders. Personal. Private. Rank-aware.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://leadershift.app">
-<meta property="og:site_name" content="LeaderShift">
-<meta property="og:image" content="https://leadershift.app/images/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="LeaderShift — Serving Leaders Who Serve">
-<meta name="twitter:description" content="An always-available digital partner built by public safety professionals, for public safety leaders. Personal. Private. Rank-aware.">
-<meta name="twitter:image" content="https://leadershift.app/images/og-image.png">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --deep-slate: #2C3E50;
-    --deep-slate-dark: #1A252F;
-    --deep-slate-light: #3D5166;
-    --warm-bronze: #B08D57;
-    --warm-bronze-light: #C9A66B;
-    --warm-bronze-glow: rgba(176, 141, 87, 0.15);
-    --warm-stone: #C4B7A6;
-    --warm-stone-light: #D9CFC2;
-    --warm-stone-dark: #A89B8A;
-    --off-white: #F8F6F3;
-    --text-muted: #8A9AAA;
-    --text-light: #B0BEC5;
-  }
+:root {
+  --deep-slate: #2C3E50;
+  --deep-slate-dark: #1A252F;
+  --deep-slate-darker: #111B22;
+  --deep-slate-light: #3D5166;
+  --warm-bronze: #B08D57;
+  --warm-bronze-light: #C9A66B;
+  --warm-bronze-dark: #8A6E43;
+  --warm-bronze-glow: rgba(176, 141, 87, 0.12);
+  --warm-stone: #C4B7A6;
+  --warm-stone-light: #D9CFC2;
+  --warm-stone-dark: #A89B8A;
+  --off-white: #F8F6F3;
+  --cream: #F2EDE6;
+  --text-muted: #8A9AAA;
+  --text-body: #B8C4CE;
+  --text-light: #CFD8DC;
+  --border-subtle: rgba(176, 141, 87, 0.12);
+  --border-medium: rgba(176, 141, 87, 0.25);
+}
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
-  html {
-    scroll-behavior: smooth;
-  }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--deep-slate-darker);
+  color: var(--off-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
 
-  body {
-    font-family: 'Outfit', sans-serif;
-    background: var(--deep-slate-dark);
-    color: var(--off-white);
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
 
-  /* ===== NOISE TEXTURE OVERLAY ===== */
-  body::before {
-    content: '';
+h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.15; }
+h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -0.01em; }
+h3 { font-size: clamp(1.4rem, 2.5vw, 1.8rem); }
+p { line-height: 1.7; font-weight: 300; }
+a { color: var(--warm-bronze); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--warm-bronze-light); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.section-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--warm-bronze);
+  margin-bottom: 1rem;
+}
+
+/* ====================== NAVIGATION ====================== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0 2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(17, 27, 34, 0.88);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all 0.4s ease;
+}
+nav.scrolled { background: rgba(17, 27, 34, 0.96); }
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--off-white);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-logo-mark {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--warm-bronze), var(--warm-bronze-dark));
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: white;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--warm-bronze);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--off-white); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--warm-bronze); }
+.nav-links a.active::after { width: 100%; }
+
+.nav-cta {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  background: var(--warm-bronze);
+  color: var(--deep-slate-darker);
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--warm-bronze-light); color: var(--deep-slate-darker); }
+
+.nav-toggle { display: none; background: none; border: none; color: var(--off-white); font-size: 1.5rem; cursor: pointer; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-  }
-
-  /* ===== NAVIGATION ===== */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 1.25rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(26, 37, 47, 0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(176, 141, 87, 0.1);
-    transition: all 0.4s ease;
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--off-white);
-    letter-spacing: 0.04em;
-    text-decoration: none;
-  }
-
-  .nav-logo img {
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-  }
-
-  .nav-logo span {
-    color: var(--warm-bronze);
-    font-weight: 700;
-  }
-
-  .nav-tagline {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-
-  .nav-cta {
-    background: transparent;
-    border: 1px solid var(--warm-bronze);
-    color: var(--warm-bronze);
-    padding: 0.6rem 1.5rem;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-  }
-
-  .nav-cta:hover {
-    background: var(--warm-bronze);
-    color: var(--deep-slate-dark);
-  }
-
-  /* ===== HERO SECTION ===== */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 8rem 2rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(176, 141, 87, 0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-logo {
-    width: 72px;
-    height: 72px;
-    border-radius: 16px;
-    margin-bottom: 2rem;
-    animation: fadeSlideUp 0.8s ease both;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(176, 141, 87, 0.1);
-    border: 1px solid rgba(176, 141, 87, 0.25);
-    padding: 0.5rem 1.25rem;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    color: var(--warm-bronze-light);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: 2.5rem;
-    animation: fadeSlideUp 0.8s ease both;
-  }
-
-  .hero-badge .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--warm-bronze);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.3); }
-  }
-
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 600;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    color: var(--off-white);
-    max-width: 800px;
-    margin-bottom: 1.75rem;
-    animation: fadeSlideUp 0.8s ease 0.15s both;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--warm-bronze);
-  }
-
-  .hero-sub {
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
-    color: var(--warm-stone);
-    max-width: 560px;
-    line-height: 1.65;
-    font-weight: 300;
-    margin-bottom: 3rem;
-    animation: fadeSlideUp 0.8s ease 0.3s both;
-  }
-
-  @keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ===== EMAIL SIGNUP ===== */
-  .signup-container {
-    display: flex;
-    gap: 0;
-    max-width: 480px;
-    width: 100%;
-    animation: fadeSlideUp 0.8s ease 0.45s both;
-  }
-
-  .signup-input {
-    flex: 1;
-    padding: 1rem 1.25rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(196, 183, 166, 0.2);
-    border-right: none;
-    color: var(--off-white);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 300;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-
-  .signup-input::placeholder {
-    color: var(--text-muted);
-  }
-
-  .signup-input:focus {
-    border-color: var(--warm-bronze);
-  }
-
-  .signup-btn {
-    padding: 1rem 2rem;
-    background: var(--warm-bronze);
-    border: 1px solid var(--warm-bronze);
-    color: var(--deep-slate-dark);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-  }
-
-  .signup-btn:hover {
-    background: var(--warm-bronze-light);
-    border-color: var(--warm-bronze-light);
-  }
-
-  .signup-note {
-    margin-top: 1rem;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 0.03em;
-    animation: fadeSlideUp 0.8s ease 0.55s both;
-  }
-
-  /* ===== SCROLL INDICATOR ===== */
-  .scroll-indicator {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    animation: fadeSlideUp 0.8s ease 0.7s both;
-  }
-
-  .scroll-indicator span {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--warm-bronze), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; height: 40px; }
-    50% { opacity: 1; height: 50px; }
-  }
-
-  /* ===== DIVIDER ===== */
-  .section-divider {
-    width: 60px;
-    height: 1px;
-    background: var(--warm-bronze);
-    margin: 0 auto 3rem;
-    opacity: 0.5;
-  }
-
-  /* ===== TRUST STRIP ===== */
-  .trust-strip {
-    padding: 4rem 2rem;
-    background: var(--deep-slate-dark);
-    text-align: center;
-    position: relative;
-  }
-
-  .trust-strip::before,
-  .trust-strip::after {
-    content: '';
-    position: absolute;
+    top: 72px;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(176, 141, 87, 0.2), transparent);
-  }
-
-  .trust-strip::before { top: 0; }
-  .trust-strip::after { bottom: 0; }
-
-  .trust-items {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    max-width: 900px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-  }
-
-  .trust-item {
-    display: flex;
+    background: rgba(17, 27, 34, 0.98);
     flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .trust-icon-symbol {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(176, 141, 87, 0.1);
-    border: 1px solid rgba(176, 141, 87, 0.2);
-    font-size: 1rem;
-    color: var(--warm-bronze);
-    margin-bottom: 0.5rem;
-  }
-
-  .trust-item strong {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: var(--off-white);
-    font-weight: 600;
-  }
-
-  .trust-item span {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    max-width: 160px;
-    line-height: 1.4;
-  }
-
-  /* ===== THE PROBLEM SECTION ===== */
-  .section-label {
-    font-size: 0.72rem;
-    color: var(--warm-bronze);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .problem-section {
-    padding: 6rem 2rem;
-    background: var(--deep-slate);
-    position: relative;
-  }
-
-  .problem-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(176, 141, 87, 0.3), transparent);
-  }
-
-  .problem-section h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    text-align: center;
-    line-height: 1.2;
-    max-width: 700px;
-    margin: 0 auto 3.5rem;
-    color: var(--off-white);
-  }
-
-  .problem-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .problem-card {
-    padding: 2.25rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(196, 183, 166, 0.08);
-    transition: all 0.4s ease;
-    position: relative;
-  }
-
-  .problem-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--warm-bronze);
-    transform: scaleX(0);
-    transform-origin: left;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    transform: translateY(-120%);
     transition: transform 0.4s ease;
   }
-
-  .problem-card:hover::before {
-    transform: scaleX(1);
-  }
-
-  .problem-card:hover {
-    background: rgba(176, 141, 87, 0.04);
-    border-color: rgba(176, 141, 87, 0.15);
-  }
-
-  .problem-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: rgba(176, 141, 87, 0.2);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-
-  .problem-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--warm-stone-light);
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
-  }
-
-  .problem-card p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  /* ===== RIDE-ALONG SECTION ===== */
-  .ridealong-section {
-    padding: 7rem 2rem;
-    background: var(--deep-slate-dark);
-    position: relative;
-  }
-
-  .ridealong-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .ridealong-content h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    font-weight: 600;
-    line-height: 1.15;
-    margin-bottom: 1.75rem;
-    color: var(--off-white);
-  }
-
-  .ridealong-content h2 em {
-    font-style: italic;
-    color: var(--warm-bronze);
-  }
-
-  .ridealong-content p {
-    font-size: 1.05rem;
-    color: var(--warm-stone);
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 1.25rem;
-  }
-
-  .ridealong-content p strong {
-    color: var(--off-white);
-    font-weight: 500;
-  }
-
-  /* Phone mockup */
-  .phone-mockup {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .phone-frame {
-    width: 280px;
-    background: var(--deep-slate);
-    border-radius: 32px;
-    border: 1.5px solid rgba(196, 183, 166, 0.12);
-    padding: 5px;
-    position: relative;
-    box-shadow:
-      0 40px 80px rgba(0,0,0,0.3),
-      inset 0 1px 0 rgba(255,255,255,0.05);
-    overflow: hidden;
-  }
-
-  .phone-screen {
-    width: 100%;
-    border-radius: 28px;
-    overflow: hidden;
-    display: block;
-  }
-
-  .phone-screen img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 28px;
-  }
-
-  .phone-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(176, 141, 87, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  /* ===== CAPABILITIES SECTION ===== */
-  .capabilities-section {
-    padding: 7rem 2rem;
-    background: var(--deep-slate);
-    position: relative;
-  }
-
-  .capabilities-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(176, 141, 87, 0.3), transparent);
-  }
-
-  .capabilities-header {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 4rem;
-  }
-
-  .capabilities-header h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    color: var(--off-white);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-
-  .capabilities-header p {
-    font-size: 1rem;
-    color: var(--warm-stone);
-    font-weight: 300;
-    line-height: 1.6;
-  }
-
-  .capabilities-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .capability-card {
-    padding: 2.5rem;
-    background: rgba(255, 255, 255, 0.015);
-    border: 1px solid rgba(196, 183, 166, 0.07);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .capability-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--warm-bronze), transparent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
-  }
-
-  .capability-card:hover::after {
-    transform: scaleX(1);
-  }
-
-  .capability-card:hover {
-    background: rgba(176, 141, 87, 0.03);
-    border-color: rgba(176, 141, 87, 0.12);
-    transform: translateY(-2px);
-  }
-
-  .capability-icon {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(176, 141, 87, 0.1);
-    border: 1px solid rgba(176, 141, 87, 0.2);
-    margin-bottom: 1.25rem;
-    font-size: 1.2rem;
-  }
-
-  .capability-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--off-white);
-    margin-bottom: 0.75rem;
-  }
-
-  .capability-card p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.65;
-    font-weight: 300;
-  }
-
-  /* ===== QUOTE SECTION ===== */
-  .quote-section {
-    padding: 6rem 2rem;
-    background: var(--deep-slate);
-    text-align: center;
-    position: relative;
-  }
-
-  .quote-section blockquote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-    font-style: italic;
-    font-weight: 500;
-    color: var(--warm-stone-light);
-    max-width: 750px;
-    margin: 0 auto;
-    line-height: 1.4;
-    position: relative;
-  }
-
-  .quote-section blockquote::before {
-    content: '\201C';
-    position: absolute;
-    top: -0.5em;
-    left: -0.4em;
-    font-size: 4rem;
-    color: var(--warm-bronze);
-    opacity: 0.3;
-    font-style: normal;
-    line-height: 1;
-  }
-
-  .quote-attribution {
-    margin-top: 1.5rem;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 400;
-    letter-spacing: 0.05em;
-  }
-
-  /* ===== FINAL CTA SECTION ===== */
-  .final-cta {
-    padding: 7rem 2rem;
-    background: var(--deep-slate-dark);
-    text-align: center;
-    position: relative;
-  }
-
-  .final-cta::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(176, 141, 87, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .final-cta h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-    font-weight: 600;
-    color: var(--off-white);
-    line-height: 1.15;
-    max-width: 600px;
-    margin: 0 auto 1.25rem;
-  }
-
-  .final-cta h2 em {
-    font-style: italic;
-    color: var(--warm-bronze);
-  }
-
-  .final-cta p {
-    font-size: 1.05rem;
-    color: var(--warm-stone);
-    font-weight: 300;
-    margin-bottom: 2.5rem;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-  }
-
-  .final-signup {
-    display: flex;
-    gap: 0;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-
-  .final-signup .signup-input {
-    border-color: rgba(196, 183, 166, 0.15);
-  }
-
-  .launch-date {
-    display: inline-block;
-    margin-top: 1.5rem;
-    font-size: 0.78rem;
-    color: var(--warm-bronze);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    padding: 3rem 2rem;
-    background: var(--deep-slate-dark);
-    border-top: 1px solid rgba(196, 183, 166, 0.06);
-  }
-
-  .footer-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--warm-stone-dark);
-  }
-
-  .footer-logo img {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    opacity: 0.6;
-  }
-
-  .footer-logo span {
-    color: var(--warm-bronze);
-    opacity: 0.6;
-  }
-
-  .footer-tagline {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    font-style: italic;
-    font-weight: 300;
-  }
-
-  .footer-legal {
-    font-size: 0.7rem;
-    color: rgba(138, 154, 170, 0.5);
-    letter-spacing: 0.03em;
-  }
-
-  .footer-links {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .footer-link {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 300;
-    transition: color 0.3s ease;
-  }
-
-  .footer-link:hover {
-    color: var(--warm-bronze);
-  }
-
-  .footer-sep {
-    color: rgba(138, 154, 170, 0.3);
-    font-size: 0.78rem;
-  }
-
-  /* ===== SIGNUP FEEDBACK ===== */
-  .signup-success {
-    font-size: 0.9rem;
-    color: var(--warm-bronze-light);
-    font-weight: 400;
-    margin-top: 0.75rem;
-    animation: fadeSlideUp 0.4s ease both;
-  }
-
-  .signup-error {
-    font-size: 0.9rem;
-    color: #E57373;
-    font-weight: 400;
-    margin-top: 0.75rem;
-    animation: fadeSlideUp 0.4s ease both;
-  }
-
-  .signup-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    nav {
-      padding: 1rem 1.25rem;
-    }
-
-    .nav-tagline {
-      display: none;
-    }
-
-    .hero {
-      padding: 7rem 1.5rem 4rem;
-    }
-
-    .signup-container,
-    .final-signup {
-      flex-direction: column;
-    }
-
-    .signup-input {
-      border-right: 1px solid rgba(196, 183, 166, 0.2) !important;
-      border-bottom: none;
-    }
-
-    .signup-btn {
-      width: 100%;
-    }
-
-    .problem-grid {
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-
-    .ridealong-inner {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-
-    .phone-mockup {
-      order: -1;
-    }
-
-    .phone-frame {
-      width: 240px;
-    }
-
-    .capabilities-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .trust-items {
-      gap: 2.5rem;
-    }
-
-    .footer-inner {
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
-    }
-
-    .footer-links {
-      justify-content: center;
-    }
-  }
+  .nav-links.open { transform: translateY(0); }
+}
+
+/* ====================== PAGE SECTIONS ====================== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ====================== HERO ====================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(ellipse, rgba(176, 141, 87, 0.06), transparent 70%);
+  pointer-events: none;
+}
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: var(--warm-bronze-glow);
+  border: 1px solid var(--border-medium);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--warm-bronze);
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--warm-bronze);
+  border-radius: 50%;
+}
+.hero h1 { margin-bottom: 1.5rem; }
+.hero h1 em { font-style: italic; color: var(--warm-bronze); }
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--text-body);
+  margin-bottom: 1rem;
+  max-width: 520px;
+}
+.hero-privacy {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--warm-bronze);
+}
+.hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  background: var(--warm-bronze);
+  color: var(--deep-slate-darker);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.btn-primary:hover { background: var(--warm-bronze-light); color: var(--deep-slate-darker); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  background: transparent;
+  color: var(--warm-bronze);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-medium);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.btn-secondary:hover { border-color: var(--warm-bronze); background: var(--warm-bronze-glow); }
+.hero-pricing {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-silhouette-frame {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-silhouette-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: contrast(1.05);
+}
+.hero-glow {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(176, 141, 87, 0.08) 0%, transparent 60%);
+  z-index: -1;
+}
+
+@media (max-width: 900px) {
+  .hero .container { grid-template-columns: 1fr; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-privacy { text-align: left; display: inline-block; }
+  .hero-actions { justify-content: center; }
+  .hero-visual { margin-top: 2rem; }
+  .hero-silhouette-frame { max-width: 360px; }
+}
+
+/* ====================== TRUST PILLARS ====================== */
+.trust-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.trust-card {
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  background: rgba(44, 62, 80, 0.2);
+  transition: all 0.4s;
+}
+.trust-card:hover {
+  border-color: var(--border-medium);
+  background: rgba(44, 62, 80, 0.35);
+  transform: translateY(-2px);
+}
+.trust-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--warm-bronze-glow);
+  border: 1px solid var(--border-medium);
+  border-radius: 10px;
+  color: var(--warm-bronze);
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+.trust-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--off-white);
+}
+.trust-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .trust-grid { grid-template-columns: 1fr; } }
+
+/* ====================== PROBLEM SECTION ====================== */
+.problem-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.problem-card {
+  padding: 2rem;
+  border-top: 3px solid var(--border-subtle);
+  transition: border-color 0.4s;
+}
+.problem-card:hover { border-top-color: var(--warm-bronze); }
+.problem-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(176, 141, 87, 0.2);
+  margin-bottom: 0.75rem;
+}
+.problem-card h3 { font-size: 1.15rem; margin-bottom: 0.75rem; }
+.problem-card p { font-size: 0.88rem; color: var(--text-muted); }
+
+@media (max-width: 768px) { .problem-grid { grid-template-columns: 1fr; } }
+
+/* ====================== DEMO SECTION ====================== */
+.demo-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.demo-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+.demo-text h3 { font-size: 1.8rem; margin-bottom: 1.25rem; }
+.demo-text p { font-size: 1rem; color: var(--text-body); margin-bottom: 1rem; max-width: 520px; }
+.demo-scenarios { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem; }
+.scenario {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--border-subtle);
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.scenario:hover, .scenario.active { border-left-color: var(--warm-bronze); background: rgba(176, 141, 87, 0.04); }
+.scenario-rank {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--warm-bronze);
+  margin-bottom: 0.25rem;
+}
+.scenario h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.35rem; }
+.scenario p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+.demo-phone { display: flex; justify-content: center; }
+.phone-frame {
+  width: 280px;
+  background: var(--deep-slate);
+  border-radius: 32px;
+  padding: 12px;
+  border: 1px solid rgba(176, 141, 87, 0.15);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.phone-screen {
+  background: var(--deep-slate-dark);
+  border-radius: 22px;
+  padding: 1.25rem;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+.phone-header {
+  text-align: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--warm-bronze);
+}
+.phone-greeting { font-size: 0.85rem; color: var(--warm-stone); margin-bottom: 1rem; }
+.chat-messages { display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+.chat-bubble {
+  padding: 0.65rem 0.9rem;
+  border-radius: 14px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  max-width: 88%;
+}
+.chat-bubble.user {
+  background: var(--warm-bronze);
+  color: var(--deep-slate-darker);
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  font-weight: 400;
+}
+.chat-bubble.ai {
+  background: rgba(196, 183, 166, 0.1);
+  color: var(--text-light);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 900px) {
+  .demo-layout { grid-template-columns: 1fr; }
+  .demo-phone { order: -1; }
+}
+
+/* ====================== AI DIFFERENTIATION CALLOUT ====================== */
+.ai-callout-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #1a2a3a 0%, var(--deep-slate) 100%);
+  border-top: 1px solid rgba(176, 141, 87, 0.2);
+  border-bottom: 1px solid rgba(176, 141, 87, 0.2);
+}
+.ai-callout-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .ai-callout-layout { grid-template-columns: 1fr; gap: 2rem; }
+}
+.ai-callout-problem h3 {
+  font-family: var(--heading);
+  font-size: 1.5rem;
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+.ai-callout-problem p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+.ai-callout-solution h3 {
+  font-family: var(--heading);
+  font-size: 1.5rem;
+  color: var(--warm-bronze);
+  margin-bottom: 1rem;
+}
+.ai-callout-solution p {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+.ai-callout-label {
+  font-family: var(--body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--warm-bronze);
+  margin-bottom: 2rem;
+}
+
+/* ====================== CAPABILITIES ====================== */
+.capabilities-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.capabilities-header { max-width: 640px; margin-bottom: 3rem; }
+.capabilities-header p { color: var(--text-muted); margin-top: 0.75rem; font-size: 1.05rem; }
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.capability-card {
+  padding: 2rem;
+  background: rgba(44, 62, 80, 0.15);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  transition: all 0.4s;
+}
+.capability-card:hover { border-color: var(--border-medium); transform: translateY(-2px); }
+.capability-icon { color: var(--warm-bronze); font-size: 1.2rem; margin-bottom: 1rem; }
+.capability-card h3 { font-size: 1.15rem; margin-bottom: 0.75rem; }
+.capability-card p { font-size: 0.88rem; color: var(--text-muted); }
+
+@media (max-width: 768px) { .capabilities-grid { grid-template-columns: 1fr; } }
+
+/* ====================== COMMUNITY IMPACT ====================== */
+.impact-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+}
+.impact-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(176, 141, 87, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+.impact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+}
+.impact-content h2 { margin-bottom: 1.5rem; }
+.impact-content h2 em { font-style: italic; color: var(--warm-bronze); }
+.impact-content p { font-size: 1.05rem; color: var(--text-body); margin-bottom: 1.25rem; max-width: 560px; }
+.impact-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.impact-stat {
+  padding: 1.5rem;
+  background: rgba(44, 62, 80, 0.2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  text-align: center;
+}
+.impact-stat .stat-icon {
+  font-size: 1.5rem;
+  color: var(--warm-bronze);
+  margin-bottom: 0.75rem;
+}
+.impact-stat h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--off-white);
+}
+.impact-stat p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .impact-layout { grid-template-columns: 1fr; }
+  .impact-stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* ====================== QUOTE ====================== */
+.quote-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+.quote-section blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--warm-stone);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+.quote-section .quote-attr {
+  margin-top: 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ====================== FAQ ====================== */
+.faq-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.faq-header { max-width: 600px; margin-bottom: 3rem; }
+.faq-header p { color: var(--text-muted); margin-top: 0.75rem; }
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.faq-item {
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-item:hover { border-color: var(--border-medium); }
+.faq-question {
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--off-white);
+  background: rgba(44, 62, 80, 0.12);
+  user-select: none;
+}
+.faq-question::after {
+  content: '+';
+  font-size: 1.2rem;
+  color: var(--warm-bronze);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+.faq-item.open .faq-question::after { content: '\2212'; }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+.faq-item.open .faq-answer { max-height: 500px; }
+.faq-answer-inner {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) { .faq-grid { grid-template-columns: 1fr; } }
+
+/* ====================== CTA ====================== */
+.cta-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+.cta-section h2 em { font-style: italic; color: var(--warm-bronze); }
+.cta-section p { color: var(--text-muted); max-width: 560px; margin: 1rem auto 2rem; font-size: 1.05rem; }
+
+/* ====================== CONSTITUTION PAGE ====================== */
+.const-hero {
+  padding: 160px 0 80px;
+  text-align: center;
+  position: relative;
+}
+.const-hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(176, 141, 87, 0.06), transparent 60%);
+  pointer-events: none;
+}
+.const-hero h1 { margin-bottom: 1.5rem; }
+.const-hero h1 em { font-style: italic; color: var(--warm-bronze); }
+.const-intro {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+.const-pillars { padding: 4rem 0 6rem; }
+.pillar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  padding: 4rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.pillar:nth-child(even) { direction: rtl; }
+.pillar:nth-child(even) > * { direction: ltr; }
+.pillar-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: rgba(176, 141, 87, 0.12);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.pillar-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--warm-bronze);
+}
+.pillar-statement {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.pillar-details h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--warm-bronze);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+.pillar-practice {
+  padding: 1rem 1.25rem;
+  background: rgba(44, 62, 80, 0.2);
+  border-left: 2px solid var(--warm-bronze);
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+.pillar-practice strong { color: var(--off-white); font-weight: 500; }
+.pillar-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pillar-icon-large {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(176, 141, 87, 0.05);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: var(--warm-bronze);
+}
+
+@media (max-width: 768px) {
+  .pillar { grid-template-columns: 1fr; }
+  .pillar:nth-child(even) { direction: ltr; }
+  .pillar-visual { display: none; }
+}
+
+/* ====================== FOUNDERS PAGE ====================== */
+.founders-hero {
+  padding: 160px 0 80px;
+  text-align: center;
+}
+.founders-hero h1 { margin-bottom: 1.5rem; }
+.founders-hero h1 em { font-style: italic; color: var(--warm-bronze); }
+.founders-intro {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+.founders-team { padding: 4rem 0 6rem; }
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.team-card {
+  padding: 2.5rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  background: rgba(44, 62, 80, 0.12);
+}
+.team-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.team-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--warm-bronze), var(--warm-bronze-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+.team-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.team-role {
+  font-size: 0.8rem;
+  color: var(--warm-bronze);
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+.team-card p { font-size: 0.92rem; color: var(--text-body); line-height: 1.7; }
+
+.advisors-section {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 4rem;
+}
+.advisors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.advisor-card {
+  padding: 2rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  background: rgba(44, 62, 80, 0.08);
+}
+.advisor-card h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+.advisor-title {
+  font-size: 0.78rem;
+  color: var(--warm-bronze);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.advisor-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+.company-section {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 4rem;
+}
+.company-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+.company-detail h3 {
+  font-size: 1.1rem;
+  color: var(--warm-bronze);
+  margin-bottom: 0.75rem;
+}
+.company-detail p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+@media (max-width: 768px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .advisors-grid { grid-template-columns: 1fr; }
+  .company-grid { grid-template-columns: 1fr; }
+}
+
+/* ====================== NARRATIVE PAGE ====================== */
+.narrative-hero {
+  padding: 160px 0 80px;
+  text-align: center;
+}
+.narrative-hero h1 { margin-bottom: 1.5rem; }
+.narrative-hero h1 em { font-style: italic; color: var(--warm-bronze); }
+.narrative-intro {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+.narrative-content { padding: 4rem 0 6rem; }
+.narrative-chapter {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.chapter-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+}
+.chapter-label {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+}
+.chapter-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: rgba(176, 141, 87, 0.15);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.chapter-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--warm-bronze);
+}
+.chapter-body h3 { font-size: 1.6rem; margin-bottom: 1.25rem; }
+.chapter-body p {
+  font-size: 1rem;
+  color: var(--text-body);
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+  max-width: 680px;
+}
+.chapter-body p:last-child { margin-bottom: 0; }
+.chapter-highlight {
+  padding: 1.5rem 2rem;
+  background: rgba(176, 141, 87, 0.05);
+  border-left: 3px solid var(--warm-bronze);
+  border-radius: 0 10px 10px 0;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .chapter-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  .chapter-label { position: static; display: flex; align-items: baseline; gap: 1rem; }
+  .chapter-number { font-size: 2rem; }
+}
+
+/* ====================== FOOTER ====================== */
+footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--off-white);
+  margin-bottom: 0.5rem;
+}
+.footer-tagline {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.footer-links a { font-size: 0.8rem; color: var(--text-muted); }
+.footer-links a:hover { color: var(--warm-bronze); }
+.footer-copy { font-size: 0.75rem; color: rgba(138, 154, 170, 0.5); }
+
+/* ====================== ANIMATIONS ====================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+.fade-up-d1 { animation-delay: 0.1s; }
+.fade-up-d2 { animation-delay: 0.2s; }
+.fade-up-d3 { animation-delay: 0.3s; }
+.fade-up-d4 { animation-delay: 0.4s; }
+.fade-up-d5 { animation-delay: 0.5s; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav>
-  <div>
-    <a class="nav-logo" href="#"><img src="images/favicon-192x192.png" alt="LeaderShift badge"><span class="nav-logo-text">Leader<span>Shift</span></span></a>
-  </div>
-  <span class="nav-tagline">Serving Leaders Who Serve</span>
+<!-- ==================== NAVIGATION ==================== -->
+<nav id="navbar">
+  <a href="#" class="nav-logo" onclick="navigateTo('home'); return false;">
+    <span class="nav-logo-mark">LS</span>
+    LeaderShift
+  </a>
+  <button class="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">&#9776;</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" data-page="home" class="active" onclick="navigateTo('home'); return false;">Home</a></li>
+    <li><a href="#" data-page="constitution" onclick="navigateTo('constitution'); return false;">Our Principles</a></li>
+    <li><a href="#" data-page="founders" onclick="navigateTo('founders'); return false;">About</a></li>
+    <li><a href="#" data-page="narrative" onclick="navigateTo('narrative'); return false;">Our Story</a></li>
+    <li><a href="#home-faq" onclick="navigateTo('home'); setTimeout(() => document.getElementById('home-faq').scrollIntoView({behavior:'smooth'}), 100); return false;">FAQ</a></li>
+    <li><a href="https://apps.apple.com/app/leadershift" class="nav-cta">Download</a></li>
+  </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <img src="images/favicon-192x192.png" alt="LeaderShift badge" class="hero-logo">
+<!-- ============================================================ -->
+<!-- HOME PAGE -->
+<!-- ============================================================ -->
+<div class="page active" id="page-home">
 
-  <div class="hero-badge">
-    <span class="dot"></span>
-    Built by Public Safety Professionals
-  </div>
-
-  <h1>Your <em>Ride-Along</em> for the Road Ahead</h1>
-
-  <p class="hero-sub">
-    An always-available digital partner for public safety leaders.
-    Personal. Private. Rank-aware.
-  </p>
-
-  <p class="signup-note">Outside of department control. On your personal device. Encrypted.</p>
-
-  <div class="scroll-indicator">
-    <span>Explore</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
-
-<!-- TRUST STRIP -->
-<section class="trust-strip">
-  <div class="trust-items">
-    <div class="trust-item">
-      <div class="trust-icon-symbol">&#9670;</div>
-      <strong>Zero-Knowledge Privacy</strong>
-      <span>Your department cannot access your conversations. By architecture, not policy.</span>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon-symbol">&#9672;</div>
-      <strong>On-Device Storage</strong>
-      <span>Your data stays on your device. You own it. You control it. You can delete it.</span>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon-symbol">&#9635;</div>
-      <strong>Always Available</strong>
-      <span>2 AM before a critical meeting. Sunday night before a Monday promotion board.</span>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon-symbol">&#9678;</div>
-      <strong>Rank-Aware</strong>
-      <span>Understands how a Sergeant leads differently than a Captain, because we built it that way.</span>
-    </div>
-  </div>
-</section>
-
-<!-- WE UNDERSTAND -->
-<section class="problem-section">
-  <p class="section-label">We Understand</p>
-  <h2>Built for the realities only public safety professionals know.</h2>
-
-  <div class="problem-grid">
-    <div class="problem-card">
-      <div class="problem-number">01</div>
-      <h3>A Confidential Space to Think</h3>
-      <p>You deserve a place to work through career decisions honestly, without those conversations becoming part of the narrative about you. LeaderShift gives you that space.</p>
-    </div>
-
-    <div class="problem-card">
-      <div class="problem-number">02</div>
-      <h3>Built for Your World</h3>
-      <p>Generic tools weren't designed for the stakes you face. LeaderShift understands rank dynamics, department culture, and the weight of the decisions you make every day.</p>
-    </div>
-
-    <div class="problem-card">
-      <div class="problem-number">03</div>
-      <h3>Support on Your Schedule</h3>
-      <p>Career decisions, personnel challenges, and promotion preparation don't wait for office hours. LeaderShift is available when the moment calls for it, not just when it's convenient.</p>
-    </div>
-  </div>
-</section>
-
-<!-- RIDE-ALONG SECTION -->
-<section class="ridealong-section">
-  <div class="ridealong-inner">
-    <div class="ridealong-content">
-      <p class="section-label" style="text-align: left;">Built for the Job</p>
-      <h2>A digital partner that <em>gets the job</em> and protects your privacy doing it.</h2>
-      <p>
-        LeaderShift is built with <strong>cultural fluency</strong>, grounded in the understanding that a Captain navigates differently than a Sergeant, that department politics shape every career move, and that seeking help shouldn't risk your reputation.
-      </p>
-      <p>
-        Think of it as a trusted ride-along for your career. Built to understand rank, respect the weight of the badge, and help you think through what's next. <strong>Career progression, daily decision support, and leadership growth</strong> that is always available and always private.
-      </p>
-    </div>
-
-    <div class="phone-mockup">
-      <div class="phone-glow"></div>
-      <div class="phone-frame">
-        <div class="phone-screen">
-          <img src="images/peer-support-screenshot.png" alt="LeaderShift peer support conversation screenshot">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge fade-up">Built by Public Safety Professionals</div>
+        <h1 class="fade-up fade-up-d1">Your Digital Partner for the <em>Road Ahead</em></h1>
+        <p class="hero-sub fade-up fade-up-d2">The industry-specific coaching partner for public safety professionals. Private, rank-aware, specialized AI built by people who understand the weight of the badge, the decisions that shape careers, and the communities they protect.</p>
+        <p class="hero-privacy fade-up fade-up-d3">Your growth. Your pace. Your device. Encrypted and confidential.</p>
+        <div class="hero-actions fade-up fade-up-d4">
+          <a href="https://apps.apple.com/app/leadershift" class="btn-primary">Download for iOS</a>
+          <a href="#" class="btn-secondary" onclick="navigateTo('constitution'); return false;">Our Principles</a>
+        </div>
+        <p class="hero-pricing fade-up fade-up-d5">Free to download &middot; $9.99/month &middot; Cancel anytime</p>
+      </div>
+      <div class="hero-visual fade-up fade-up-d3">
+        <div class="hero-silhouette-frame">
+          <div class="hero-glow"></div>
+          <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-subtle); border-radius: 16px; background: rgba(44,62,80,0.15);">
+            <div style="text-align: center; padding: 2rem;">
+              <div style="font-size: 5rem; opacity: 0.12; line-height: 1;">&#9762;</div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">Silhouette mosaic graphic</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CAPABILITIES -->
-<section class="capabilities-section">
-  <div class="capabilities-header">
-    <p class="section-label">What LeaderShift Does</p>
-    <h2>Built for the decisions that shape careers.</h2>
-    <p>From the patrol car to the corner office, support that scales with your ambition.</p>
-  </div>
-
-  <div class="capabilities-grid">
-    <div class="capability-card">
-      <div class="capability-icon">&#9670;</div>
-      <h3>Career Navigation</h3>
-      <p>Promotion preparation, board strategy, and long-term career planning calibrated to your rank, experience, and goals. Your next move, thought through.</p>
+  <!-- TRUST STRIP — capability-first ordering -->
+  <section class="trust-section">
+    <div class="container">
+      <p class="section-label reveal">What Makes Us Different</p>
+      <h2 class="reveal">We make you better at your job.</h2>
+      <div class="trust-grid">
+        <div class="trust-card reveal">
+          <div class="trust-icon">&#9678;</div>
+          <h3>Rank-Aware</h3>
+          <p>Officers need to understand rank dynamics and communicate effectively inside their organizations. LeaderShift understands how a Sergeant leads differently than a Captain, because we built it that way.</p>
+        </div>
+        <div class="trust-card reveal">
+          <div class="trust-icon">&#9670;</div>
+          <h3>Built for Public Safety</h3>
+          <p>Grounded in the realities of shift work, chain of command, department culture, and the decisions that shape careers. Not generic advice adapted to fit.</p>
+        </div>
+        <div class="trust-card reveal">
+          <div class="trust-icon">&#9635;</div>
+          <h3>Always Available</h3>
+          <p>2 A.M. before a critical moment. Sunday night before a Monday promotion board. On your schedule, not office hours.</p>
+        </div>
+        <div class="trust-card reveal">
+          <div class="trust-icon">&#9672;</div>
+          <h3>Private by Design</h3>
+          <p>No one can see your conversations. No logs of what you said. You are never identified. Delete anytime and it is gone.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="capability-card">
-      <div class="capability-icon">&#9672;</div>
-      <h3>Decision Support</h3>
-      <p>Work through complex personnel decisions, department politics, and leadership challenges with a digital partner that understands the context and the stakes.</p>
+  <!-- PROBLEM SECTION — reframed -->
+  <section class="problem-section">
+    <div class="container">
+      <p class="section-label reveal">The Realities Behind the Badge</p>
+      <h2 class="reveal">Your world is different. Your tools should be too.</h2>
+      <div class="problem-grid">
+        <div class="problem-card reveal">
+          <div class="problem-number">01</div>
+          <h3>Your World Is Different</h3>
+          <p>The decisions you face do not fit generic frameworks. Rank dynamics, department culture, community expectations, the stress of the job, and the weight of the authority you carry require guidance built specifically for your profession.</p>
+        </div>
+        <div class="problem-card reveal">
+          <div class="problem-number">02</div>
+          <h3>Growth Should Not Require Exposure</h3>
+          <p>Real development means thinking out loud about hard questions. That only happens when the space is genuinely private. LeaderShift gives you room to reflect without those reflections becoming part of anyone else's narrative.</p>
+        </div>
+        <div class="problem-card reveal">
+          <div class="problem-number">03</div>
+          <h3>Available When the Moment Calls</h3>
+          <p>The conversation you need at 2 A.M. before a critical moment should not wait for a scheduled appointment. Your development happens on your timeline.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="capability-card">
-      <div class="capability-icon">&#9635;</div>
-      <h3>Leadership Growth</h3>
-      <p>Build the communication, conflict resolution, and team management skills that separate good supervisors from great leaders at every rank.</p>
+  <!-- PRODUCT DEMO -->
+  <section class="demo-section">
+    <div class="container">
+      <div class="demo-layout">
+        <div class="demo-text">
+          <p class="section-label reveal">See It in Action</p>
+          <h2 class="reveal">A coaching partner that <em>gets the job.</em></h2>
+          <p class="reveal">LeaderShift is built with cultural fluency, grounded in the understanding that a Captain navigates differently than a Sergeant, that organizational dynamics shape every career decision, and that the best leaders never stop developing.</p>
+          <div class="demo-scenarios">
+            <div class="scenario active reveal">
+              <p class="scenario-rank">Patrol Officer</p>
+              <h4>Considering First Promotion</h4>
+              <p>Weighing whether to go for Sergeant, what the board actually looks for, and how to build the case when you are ready.</p>
+            </div>
+            <div class="scenario reveal">
+              <p class="scenario-rank">Sergeant</p>
+              <h4>Passed Over for Promotion</h4>
+              <p>Navigate the personal and professional dimensions of being told "we went another direction" without clear feedback.</p>
+            </div>
+            <div class="scenario reveal">
+              <p class="scenario-rank">Lieutenant</p>
+              <h4>Managing Up</h4>
+              <p>Build strategies for navigating command staff whose priorities conflict with operational reality on the ground.</p>
+            </div>
+            <div class="scenario reveal">
+              <p class="scenario-rank">Captain</p>
+              <h4>Media-Facing Crisis</h4>
+              <p>Prepare for press conferences, council meetings, and public accountability moments with confidence and clarity.</p>
+            </div>
+          </div>
+        </div>
+        <div class="demo-phone reveal">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-header">LeaderShift</div>
+              <div class="phone-greeting">Good evening, Sergeant.</div>
+              <div class="chat-messages">
+                <div class="chat-bubble user">I just got passed over for the Lieutenant list. I don't know what to do next.</div>
+                <div class="chat-bubble ai">That's a hard hit, especially when you've been putting in the work. Let's think through this together. Was there feedback from the board, or did this come without explanation?</div>
+                <div class="chat-bubble user">No real feedback. Just "we went another direction."</div>
+                <div class="chat-bubble ai">Understood. There are a few angles here: building your case for the next cycle, understanding what the board weighted, and making sure this doesn't affect your daily leadership. Which feels most urgent right now?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="capability-card">
-      <div class="capability-icon">&#9678;</div>
-      <h3>Daily Resilience</h3>
-      <p>Stress management, work-life integration, and the kind of honest reflection that keeps you sharp, without the stigma of asking for help.</p>
+  <!-- AI DIFFERENTIATION CALLOUT -->
+  <section class="ai-callout-section">
+    <div class="container">
+      <p class="ai-callout-label reveal">Why Generic AI Fails Here</p>
+      <div class="ai-callout-layout">
+        <div class="ai-callout-problem reveal">
+          <h3>We Tested the Alternatives.</h3>
+          <p>We put real public safety scenarios through ChatGPT, Gemini, and other consumer AI tools. The results were dangerous.</p>
+          <p>Generic AI suggested approaches that would violate department policy. It gave advice that ignored chain of command. It recommended actions that could compromise officer safety or constitutional policing standards. In one test, it provided guidance that could be construed as encouraging evidence tampering.</p>
+          <p>These tools were not built for your world. They do not understand the consequences of getting it wrong.</p>
+        </div>
+        <div class="ai-callout-solution reveal">
+          <h3>LeaderShift Was Built for It.</h3>
+          <p>Every response is grounded in the realities of public safety: rank dynamics, policy constraints, liability awareness, and the professional standards your career depends on.</p>
+          <p>LeaderShift does not guess at your context. It understands the difference between a patrol officer navigating a new supervisor and a lieutenant managing up to a chief. It knows what matters in your world because the people who built it lived in that world.</p>
+          <p>This is not generic AI with a police skin. This is specialized intelligence built from the ground up for the profession.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- QUOTE -->
-<section class="quote-section">
-  <div class="section-divider"></div>
-  <blockquote>
-    A digital partner that understands your world and is always available to collaborate, giving you the confidence to speak effectively to everyone from rookies on patrol to senior leadership and the public at large.
-  </blockquote>
-  <p class="quote-attribution">The LeaderShift Mission</p>
-</section>
+  <!-- CAPABILITIES — broadened for all ranks -->
+  <section class="capabilities-section">
+    <div class="container">
+      <div class="capabilities-header">
+        <p class="section-label reveal">What LeaderShift Does</p>
+        <h2 class="reveal">Built for the decisions that shape careers.</h2>
+        <p class="reveal">From the patrol car to the corner office, support that scales with your ambition.</p>
+      </div>
+      <div class="capabilities-grid">
+        <div class="capability-card reveal">
+          <div class="capability-icon">&#9670;</div>
+          <h3>Career Navigation</h3>
+          <p>Whether you are weighing your first promotion or planning your path to command, LeaderShift helps you think through the strategy, the preparation, and the timing. Calibrated to your rank and experience.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon">&#9672;</div>
+          <h3>Decision Support</h3>
+          <p>The challenging situation at work that does not have a clean answer. The conversation with a superior you need to get right. The organizational challenge no textbook prepared you for. Think it through with a partner that understands the context.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon">&#9635;</div>
+          <h3>Leadership Growth</h3>
+          <p>The skills that separate effective leaders from everyone else at every rank. Communication, conflict resolution, team dynamics, and the self-awareness to keep growing after the promotion is earned.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon">&#9678;</div>
+          <h3>Daily Resilience</h3>
+          <p>Stress management, work-life integration, and the honest self-reflection that keeps you sharp. Built into your routine, not a separate appointment.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon">&#9674;</div>
+          <h3>Adapts to You</h3>
+          <p>LeaderShift remembers your goals, challenges, and where you are in your career. The more you use it, the more relevant it becomes. Your identity is never shared, and you can delete everything at any time.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon">&#9830;</div>
+          <h3>Independent</h3>
+          <p>Not affiliated with any department, agency, or union. That independence means our only obligation is to you. Your career interests come first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <p class="section-label">Coming Soon</p>
-  <h2>The shift starts <em>with you.</em></h2>
-  <span class="launch-date">Launching February 2026</span>
-</section>
+  <!-- COMMUNITY IMPACT — new section -->
+  <section class="impact-section">
+    <div class="container">
+      <div class="impact-layout">
+        <div class="impact-content reveal">
+          <p class="section-label">Why It Matters</p>
+          <h2>Supporting officers strengthens <em>everyone.</em></h2>
+          <p>Public safety professionals are in service to their communities. That is the core of the work: to protect and to serve. LeaderShift gives them a tool to sharpen that work on their own terms.</p>
+          <p>Better leaders make everyone safer — and they feel better about their careers too. Officers who invest in their leadership communicate more effectively, navigate with greater resilience in the moments that matter most, and reduce the stress that comes with the job. They bring greater clarity and care to their communities as a result.</p>
+        </div>
+        <div class="impact-stats reveal">
+          <div class="impact-stat">
+            <div class="stat-icon">&#9670;</div>
+            <h4>Sharper Under Pressure</h4>
+            <p>Leadership is a muscle. The more you work it, the more thoughtful your decisions become when the pressure is on.</p>
+          </div>
+          <div class="impact-stat">
+            <div class="stat-icon">&#9672;</div>
+            <h4>Institutional Knowledge</h4>
+            <p>Experienced officers who feel supported stay in the profession longer, keeping hard-earned expertise where it is needed.</p>
+          </div>
+          <div class="impact-stat">
+            <div class="stat-icon">&#9635;</div>
+            <h4>Stronger Connections</h4>
+            <p>Leaders who grow build stronger relationships within their teams and with the communities they serve.</p>
+          </div>
+          <div class="impact-stat">
+            <div class="stat-icon">&#9678;</div>
+            <h4>The Ripple Effect</h4>
+            <p>One officer's growth influences their team, their peers, and every interaction that follows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
+  <!-- QUOTE — community bridge -->
+  <section class="quote-section reveal">
+    <div class="container">
+      <blockquote>The AI platform for career progression, healthier decisions, and stronger communities, together.</blockquote>
+    </div>
+  </section>
+
+  <!-- FAQ — expanded -->
+  <section class="faq-section" id="home-faq">
+    <div class="container">
+      <div class="faq-header">
+        <p class="section-label reveal">Questions</p>
+        <h2 class="reveal">Frequently Asked Questions</h2>
+        <p class="reveal">Everything you need to know, from privacy to pricing.</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">Can my department see my conversations?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">No. This is the foundation of everything we built. Your conversations are never logged and you are never identified. We have no backdoors for administrators or agencies. There is no record for your department to access and nothing that can be subpoenaed through departmental channels. You can delete your data at any time and it is wiped completely. This is not a policy. It is how the system is architected.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">What is LeaderShift?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">LeaderShift is an AI-powered coaching and professional development tool built specifically for public safety professionals. It helps you navigate career progression, leadership challenges, and the daily realities of the job with guidance that understands rank structures, department culture, and the unique pressures you face.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">Is this therapy?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">No. LeaderShift is a coaching and professional development tool, not licensed therapy. It focuses on career development, leadership skills, and navigating workplace challenges. If you are dealing with trauma, PTSD, or clinical issues, we encourage you to work with a licensed professional. Many people find professional development and clinical care complement each other well.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">How is this different from ChatGPT?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">We built LeaderShift because generic AI fails public safety professionals. Our testing showed tools like ChatGPT routinely give advice that violates policy, ignores chain of command, or misses critical safety considerations. LeaderShift understands what a Sergeant is, how a Captain communicates differently with a Chief than with a Rookie, and the specific realities of your work environment. We speak to officers, not about them.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">Will using this affect my fitness-for-duty status?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">No. LeaderShift is a professional development tool. Using it is no different from reading a leadership book or attending a conference. It does not create clinical records, and since your department has no access to your conversations, your use cannot be factored into fitness-for-duty evaluations or affect your career standing.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">I'm a patrol officer, not a supervisor. Is this for me?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes. Leadership development does not start at promotion. Some of the most consequential career decisions happen at the patrol level: whether to go for Sergeant, how to handle a difficult FTO relationship, how to build the skills that promotion boards actually look for, and how to stay motivated when the job gets heavy. LeaderShift meets you where you are.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">How does LeaderShift benefit the communities officers serve?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">When public safety professionals invest in their own leadership development, the effects ripple outward. Better communication skills, more thoughtful decision-making, stronger self-awareness, and greater resilience under pressure all translate directly into how officers interact with the people they serve. Supporting the people who carry the badge is one of the most direct ways to strengthen public safety for everyone.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">How much does it cost?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">$9.99 per month through the Apple App Store. Cancel anytime. Your subscription gives you unlimited access to all coaching and professional development features.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">Is my data used to train AI models?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">No. We do not train our AI on your personal conversations. Your data stays your data. Personalization happens within your individual experience, not by feeding your information into a broader training dataset.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">Who built this?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">LeaderShift was founded by Eric Lohela and Kevin Magnan. Eric brings twenty years in government consulting with a dedicated focus towards public safety since 2019, having worked with dozens of agencies from Michigan State Police to LAPD. Kevin is a former sworn officer with a Master's in data and analytics who ran a statewide crime lab before designing the AI technology behind LeaderShift. Our advisory team includes a retired deputy chief with twenty-three years of service who held every role inside a law enforcement organization and a strategic partner from the NYU Policing Project. We are an independent company. That independence means our only obligation is to you.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">Can my department purchase LeaderShift for our personnel?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">We are exploring institutional partnerships for agencies that want to support their people's professional development. If your department is interested, contact us at support@leadershift.app. Individual subscriptions remain completely private regardless of how they are funded.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">What devices does LeaderShift work on?</div>
+          <div class="faq-answer"><div class="faq-answer-inner">LeaderShift is currently available for iPhone and iPad (iOS 15.0+). Android is coming soon. We recommend using your personal device rather than department-issued equipment to ensure your conversations remain entirely under your control.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container reveal">
+      <h2>The shift starts <em>with you.</em></h2>
+      <p>Available now on the App Store. Professional development built for public safety, on your terms.</p>
+      <a href="https://apps.apple.com/app/leadershift" class="btn-primary">Download for iOS</a>
+      <p class="hero-pricing" style="margin-top: 1rem;">$9.99/month &middot; Cancel anytime</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- CONSTITUTION PAGE -->
+<!-- ============================================================ -->
+<div class="page" id="page-constitution">
+
+  <section class="const-hero">
+    <div class="container">
+      <p class="section-label fade-up">The LeaderShift Constitution</p>
+      <h1 class="fade-up fade-up-d1">Three Principles. <em>No Compromises.</em></h1>
+      <p class="const-intro fade-up fade-up-d2">Every AI system has values, whether its builders name them or not. We chose to name ours. The LeaderShift Constitution governs every interaction, every design decision, and every boundary our platform maintains. Three co-equal pillars. No hierarchy between them. Each one constraining and enabling the others.</p>
+    </div>
+  </section>
+
+  <section class="const-pillars">
+    <div class="container">
+
+      <!-- PRIVATE -->
+      <div class="pillar reveal">
+        <div>
+          <div class="pillar-number">01</div>
+          <div class="pillar-name">Private</div>
+          <p class="pillar-statement">Real professional growth requires honest self-reflection. And honest self-reflection requires knowing that what you say stays between you and the tool you are working with. In a profession defined by constant documentation and institutional scrutiny, privacy is not a feature. It is the foundation that makes everything else possible.</p>
+          <div class="pillar-details">
+            <h4>How This Shows Up</h4>
+            <div class="pillar-practice"><strong>No one sees your conversations.</strong> Your interactions with LeaderShift are never logged and you are never identified. There is no record for anyone to access — not your department, not us, not anyone.</div>
+            <div class="pillar-practice"><strong>No departmental access.</strong> There are no backdoors, no admin portals, no data exports. Nothing can be subpoenaed through departmental channels because there is nothing to produce. This matters in an era where digital interactions increasingly live in discoverable systems.</div>
+            <div class="pillar-practice"><strong>Your data, your control.</strong> Delete it anytime and it is wiped completely. No approval process. No retention policies working against you. Using LeaderShift is no different from reading a leadership book on your own time.</div>
+            <div class="pillar-practice"><strong>Independent by design.</strong> We are not a department tool. We are a personal professional development platform. That distinction is structural and legal, not semantic. It is what allows us to serve your interests first.</div>
+          </div>
+        </div>
+        <div class="pillar-visual">
+          <div class="pillar-icon-large">&#9670;</div>
+        </div>
+      </div>
+
+      <!-- HONEST -->
+      <div class="pillar reveal">
+        <div>
+          <div class="pillar-number">02</div>
+          <div class="pillar-name">Honest</div>
+          <p class="pillar-statement">You do not need another tool that tells you what you want to hear. You need a partner that tells you what you need to hear, with the care and precision that helps you navigate a complex world. Honesty without empathy is cruelty. Empathy without honesty is cowardice. We practice both together.</p>
+          <div class="pillar-details">
+            <h4>How This Shows Up</h4>
+            <div class="pillar-practice"><strong>Direct feedback.</strong> When your approach has blind spots, LeaderShift names them respectfully. A good partner does not let you walk into a promotion board underprepared because telling you felt uncomfortable.</div>
+            <div class="pillar-practice"><strong>Honest about limitations.</strong> LeaderShift will tell you what it does not know, what it cannot do, and when you need a human professional instead. We will never pretend to be therapy, legal counsel, or a substitute for clinical care.</div>
+            <div class="pillar-practice"><strong>No performance theater.</strong> We do not inflate your readiness, minimize real challenges, or offer false reassurance. The job is too serious for that.</div>
+            <div class="pillar-practice"><strong>Candor is kind.</strong> Withholding honest feedback is the unkind act. Every interaction is built on this principle.</div>
+          </div>
+        </div>
+        <div class="pillar-visual">
+          <div class="pillar-icon-large">&#9672;</div>
+        </div>
+      </div>
+
+      <!-- USEFUL -->
+      <div class="pillar reveal">
+        <div>
+          <div class="pillar-number">03</div>
+          <div class="pillar-name">Useful</div>
+          <p class="pillar-statement">Useful means industry-specific and built with guidance and feedback from patrol officers through executive leadership to manage the real-world scenarios you face on the job and when you take the day home.</p>
+          <div class="pillar-details">
+            <h4>How This Shows Up</h4>
+            <div class="pillar-practice"><strong>Context-aware guidance.</strong> LeaderShift knows that "time blocking" means something different when you work 12-hour rotating shifts with mandatory overtime and court appearances. Generic productivity advice does not survive first contact with the job.</div>
+            <div class="pillar-practice"><strong>Rank-calibrated.</strong> The coaching a patrol officer considering promotion needs is different from what a Captain preparing for a Chief's role needs. LeaderShift scales its depth, language, and framing to match where you are in your career.</div>
+            <div class="pillar-practice"><strong>Actionable, not theoretical.</strong> Every interaction aims to leave you with something you can do, say, prepare for, or think differently about. Practical next steps, not abstract wisdom.</div>
+            <div class="pillar-practice"><strong>Evolves with you.</strong> LeaderShift remembers your goals, your challenges, and where you left off. It uses a stable, clear approach that builds rapport over time, becoming more personalized the more you use it. And behind it, a team constantly working to make every conversation better.</div>
+          </div>
+        </div>
+        <div class="pillar-visual">
+          <div class="pillar-icon-large">&#9635;</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="quote-section reveal">
+    <div class="container">
+      <blockquote>This era demands digital tools that protect privacy so people can be honest about their real needs — tools that are useful across the full spectrum of their lives, from the professional challenges they navigate on duty to the personal ones that follow them home.</blockquote>
+      <div style="margin-top: 2.5rem;">
+        <a href="https://apps.apple.com/app/leadershift" class="btn-primary">Experience It Yourself</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- FOUNDERS / ABOUT PAGE -->
+<!-- ============================================================ -->
+<div class="page" id="page-founders">
+
+  <section class="founders-hero">
+    <div class="container">
+      <p class="section-label fade-up">About LeaderShift</p>
+      <h1 class="fade-up fade-up-d1">Built by Industry Veterans Who <em>Understand Today's Challenges</em></h1>
+      <p class="founders-intro fade-up fade-up-d2">LeaderShift was not born in a startup incubator. It was born from a simple observation: the people we trust to keep our communities safe deserve confidential support for the career decisions that define their professional lives. We set out to build it.</p>
+    </div>
+  </section>
+
+  <section class="founders-team">
+    <div class="container">
+      <p class="section-label reveal">Leadership</p>
+      <h2 class="reveal" style="margin-bottom: 2rem;">Founding Team</h2>
+
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-card-header">
+            <div class="team-avatar">EL</div>
+            <div>
+              <div class="team-name">Eric Lohela</div>
+              <div class="team-role">Chief Executive Officer &amp; Co-Founder</div>
+            </div>
+          </div>
+          <p>Twenty years in government consulting and with a dedicated focus towards public safety since 2019. Eric has worked with dozens of agencies from Michigan State Police to LAPD, and understands the challenge of building technology that actually serves the professionals who use it. He leads LeaderShift's strategic direction, business development, and partnerships.</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-card-header">
+            <div class="team-avatar">KM</div>
+            <div>
+              <div class="team-name">Kevin Magnan</div>
+              <div class="team-role">Chief Technology Officer &amp; Co-Founder</div>
+            </div>
+          </div>
+          <p>A former sworn officer with a Master's in data and analytics, Kevin brings deep experience in how to build systems that matter — full of real work insight, data-driven approaches to solving problems, and technical precision. He ran a statewide crime lab before designing the AI technology behind LeaderShift, and he built this tool in part because he wished he had had it on the ground with him during some of his most challenging patrol days.</p>
+        </div>
+      </div>
+
+      <!-- Advisors -->
+      <div class="advisors-section reveal">
+        <p class="section-label">Advisory Team</p>
+        <h2>Governance &amp; Expertise</h2>
+        <p style="color: var(--text-muted); max-width: 640px; margin-top: 0.75rem; margin-bottom: 1rem; font-size: 1rem;">LeaderShift is not two founders building in isolation. We have assembled a governance infrastructure that brings subject matter expertise, regulatory guidance, and decades of operational credibility.</p>
+        <div class="advisors-grid">
+          <div class="advisor-card reveal">
+            <h3>Chris Bolton</h3>
+            <p class="advisor-title">Strategic Partner &middot; Retired Deputy Chief</p>
+            <p>Twenty-three years of law enforcement service, having held every role inside a police organization from patrol to deputy chief. Chris provides the insider perspective and distribution network that ensures LeaderShift speaks authentically to the profession it serves.</p>
+          </div>
+          <div class="advisor-card reveal">
+            <h3>Maureen McGough</h3>
+            <p class="advisor-title">Strategic Partner &middot; NYU Policing Project</p>
+            <p>Institutional strategy, academic research partnerships, and alignment with gender equity initiatives including the 30x30 coalition. Maureen ensures LeaderShift meets the highest standards of responsible AI development in the public safety space.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Details -->
+      <div class="company-section">
+        <p class="section-label reveal">The Company</p>
+        <h2 class="reveal">How We Are Built</h2>
+        <div class="company-grid">
+          <div class="company-detail reveal">
+            <h3>Privately Owned. Officer-Focused.</h3>
+            <p>LeaderShift is a privately owned Wyoming LLC, not affiliated with any department, agency, union, or law enforcement vendor. We are not backed by venture capital or optimizing for Silicon Valley's growth narrative. We are a small business obsessively focused on our customers: the public safety professionals who use this tool every day. That independence means our only obligation is to you.</p>
+          </div>
+          <div class="company-detail reveal">
+            <h3>Built Secure and Stable</h3>
+            <p>We built applications to high standards, with the security architecture and safety considerations to support officers during times of acute need. Aligned with the NIST AI Risk Management Framework and ISO/IEC 23894 guidance on AI risk management. When our platform reaches its limits, we make sure you have access to comprehensive resources outside the scope of what our app can deliver. We built the product first, not the marketing department.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container reveal">
+      <h2>Built for trust. <em>Earned through use.</em></h2>
+      <p>We do not ask you to take our word for it. We ask you to try it and decide for yourself.</p>
+      <a href="https://apps.apple.com/app/leadershift" class="btn-primary">Download for iOS</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- NARRATIVE / OUR STORY PAGE -->
+<!-- ============================================================ -->
+<div class="page" id="page-narrative">
+
+  <section class="narrative-hero">
+    <div class="container">
+      <p class="section-label fade-up">Our Story</p>
+      <h1 class="fade-up fade-up-d1">Why LeaderShift <em>Exists</em></h1>
+      <p class="narrative-intro fade-up fade-up-d2">Public safety professionals carry a weight that most people will never fully understand. The decisions they make under pressure, the careers they build inside complex organizations, the line they walk between duty and personal identity. LeaderShift exists because the career support available to these professionals has not kept pace with the demands placed on them in this country.</p>
+    </div>
+  </section>
+
+  <section class="narrative-content">
+    <div class="container">
+
+      <!-- Chapter 1: The Challenge -->
+      <div class="narrative-chapter reveal">
+        <div class="chapter-layout">
+          <div class="chapter-label">
+            <div class="chapter-number">01</div>
+            <div class="chapter-title">The Challenge</div>
+          </div>
+          <div class="chapter-body">
+            <h3>Modern policing demands leaders it does not fully equip.</h3>
+            <p>The profession asks officers to be crisis negotiators, community liaisons, legal scholars, team managers, media-facing representatives, and tactical operators, often within the same shift. Officers do receive training as they advance — academy instruction, leadership off-sites, specialized courses, and additional support at each career stage. But there is a gap between what formal programs deliver and what officers actually need to navigate the complex organizational realities of their careers.</p>
+            <p>That gap widens at every step up the chain of command. The higher you go, the fewer people are available to talk to honestly about what the role actually demands.</p>
+            <div class="chapter-highlight">The people who need the most strategic support and insight have the fewest confidential places to pursue it. That is the paradox of leadership in public safety.</div>
+            <p>The profession faces a real retention challenge. Experienced officers leave, taking institutional knowledge that cannot be replaced. Providing officers with tools to support their career progression — outside the direct demands of constitutional policing and service delivery — is one of the most strategic investments we can make in the profession's ability to serve communities for the long term.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 2: The Gap -->
+      <div class="narrative-chapter reveal">
+        <div class="chapter-layout">
+          <div class="chapter-label">
+            <div class="chapter-number">02</div>
+            <div class="chapter-title">The Gap</div>
+          </div>
+          <div class="chapter-body">
+            <h3>Generic AI fails public safety professionals.</h3>
+            <p>When we tested consumer AI tools with real public safety scenarios, the results were not just unhelpful. They were dangerous. Tools like ChatGPT routinely provided advice that violated policy, ignored chain of command, or missed critical safety considerations. In our safety testing, generic AI even offered guidance on how to doctor evidence and avoid constitutional policing practices.</p>
+            <p>The challenges of unregulated AI and off-the-shelf solutions go beyond bad advice. Officers need timely guidance on how to have complex conversations. They need space to share how they are feeling and vent after a hard shift. They need the ability to reorient themselves when they need to switch modes between professional demands and the rest of their lives. Generic tools were not designed for any of this.</p>
+            <div class="chapter-highlight">There is nothing like this coming from agencies to support officers on their own terms, and generic tools do not work. LeaderShift exists to provide this strategic tool on your personal device, for conversations about how to show up at your best.</div>
+            <p>The coaching industry has seen explosive growth, with platforms serving executives and managers across corporate environments. But none of them speak to the specific realities of public safety: the rank structures, the operational tempo, the legal environment, the culture. It is a different world, and it demands a purpose-built solution.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 3: The Shift -->
+      <div class="narrative-chapter reveal">
+        <div class="chapter-layout">
+          <div class="chapter-label">
+            <div class="chapter-number">03</div>
+            <div class="chapter-title">The Shift</div>
+          </div>
+          <div class="chapter-body">
+            <h3>The name is the mission.</h3>
+            <p>We named the company LeaderShift because the word captures everything we are building.</p>
+            <p><strong>The work shift.</strong> The hours on duty, the mental transition on the drive home, and the moments between calls when you process what just happened and prepare for what comes next.</p>
+            <p><strong>The career shift.</strong> Every promotion is a shift in identity, not just a change in title — from executing to leading, from following to shaping the culture of an entire organization.</p>
+            <p><strong>The cultural shift.</strong> Public safety operates in an increasingly complex environment with growing scrutiny. The profession is evolving, and the leaders navigating that change need tools that help officers and communities bridge the gap around trust.</p>
+            <div class="chapter-highlight">LeaderShift is a companion across all of these — from the work shift through career coaching conversations to the complexity of leading in a profession that is changing in real time.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 4: The Approach -->
+      <div class="narrative-chapter reveal">
+        <div class="chapter-layout">
+          <div class="chapter-label">
+            <div class="chapter-number">04</div>
+            <div class="chapter-title">The Approach</div>
+          </div>
+          <div class="chapter-body">
+            <h3>Trust is the moat. Everything else follows.</h3>
+            <p>We chose to build for the individual professional first, because trust in this space cannot be mandated from the top down. It has to be earned one conversation at a time.</p>
+            <p>The privacy architecture exists because professionals need to know their reflections stay private. The independence from departmental affiliation exists because the moment we become "the department's tool," we lose the ability to serve the individual's actual interests. In an era where digital interactions increasingly live in discoverable systems, officers need to know that their professional development conversations are theirs alone.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 5: The Vision -->
+      <div class="narrative-chapter reveal">
+        <div class="chapter-layout">
+          <div class="chapter-label">
+            <div class="chapter-number">05</div>
+            <div class="chapter-title">The Vision</div>
+          </div>
+          <div class="chapter-body">
+            <h3>Stronger leaders. Safer communities.</h3>
+            <p>Every officer who navigates a difficult organizational relationship more effectively makes their team stronger. Every leader who prepares thoroughly for a promotion board raises the quality of command. Every professional who develops greater resilience stays in the profession longer, carrying institutional knowledge that cannot be replaced.</p>
+            <p>Leaders who invest in their own growth communicate more effectively and make better decisions, which directly supports the communities they serve. Supporting the people who carry the badge makes everyone safer.</p>
+            <p>LeaderShift is focused on public safety and corrections today, with a vision that extends to all first responders.</p>
+            <div class="chapter-highlight">That is the shift we are building toward.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container reveal">
+      <h2>The shift starts <em>with you.</em></h2>
+      <p>Professional development built for public safety, on your terms.</p>
+      <a href="https://apps.apple.com/app/leadershift" class="btn-primary">Download for iOS</a>
+      <p class="hero-pricing" style="margin-top: 1rem;">$9.99/month &middot; Cancel anytime</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ==================== FOOTER ==================== -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-logo"><img src="images/favicon-192x192.png" alt="LeaderShift badge"><span class="footer-logo-text">Leader<span>Shift</span></span></div>
-    <span class="footer-tagline">Serving leaders who serve.</span>
+  <div class="container">
+    <div class="footer-logo">LeaderShift</div>
+    <div class="footer-tagline">Serving leaders who serve.</div>
     <div class="footer-links">
-      <a href="faq.html" class="footer-link">FAQ</a>
-      <span class="footer-sep">&middot;</span>
-      <a href="terms.html" class="footer-link">Terms of Service</a>
-      <span class="footer-sep">&middot;</span>
-      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="#" onclick="navigateTo('home'); return false;">Home</a>
+      <a href="#" onclick="navigateTo('constitution'); return false;">Our Principles</a>
+      <a href="#" onclick="navigateTo('founders'); return false;">About</a>
+      <a href="#" onclick="navigateTo('narrative'); return false;">Our Story</a>
+      <a href="#home-faq" onclick="navigateTo('home'); setTimeout(() => document.getElementById('home-faq').scrollIntoView({behavior:'smooth'}), 100); return false;">FAQ</a>
+      <a href="mailto:support@leadershift.app">Contact</a>
     </div>
-    <span class="footer-legal">&copy; 2026 LeaderShift LLC &middot; Wyoming</span>
+    <div class="footer-copy">&copy; 2026 LeaderShift LLC &middot; Wyoming &middot; <a href="#">Terms</a> &middot; <a href="#">Privacy Policy</a></div>
   </div>
 </footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+function navigateTo(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a => a.classList.remove('active'));
+  const activeLink = document.querySelector('.nav-links a[data-page="' + pageId + '"]');
+  if (activeLink) activeLink.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('navLinks').classList.remove('open');
+  setTimeout(() => {
+    document.querySelectorAll('.page.active .reveal').forEach(el => el.classList.remove('visible'));
+    observeElements();
+  }, 100);
+}
+
+function toggleMobileNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+function observeElements() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.page.active .reveal').forEach(el => observer.observe(el));
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+document.addEventListener('DOMContentLoaded', () => observeElements());
+</script>
 
 </body>
 </html>
