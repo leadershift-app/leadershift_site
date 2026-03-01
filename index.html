@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LeaderShift | Serving Leaders Who Serve</title>
+<meta name="description" content="A private, rank-aware digital partner for public safety professionals. Peer support and professional development built by people who understand the weight of the badge.">
+<meta property="og:title" content="LeaderShift | Serving Leaders Who Serve">
+<meta property="og:description" content="A private, rank-aware digital partner for public safety professionals. Peer support and professional development built by people who understand the weight of the badge.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leadershift.app/">
+<meta property="og:site_name" content="LeaderShift">
+<meta property="og:image" content="https://leadershift.app/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LeaderShift | Serving Leaders Who Serve">
+<meta name="twitter:description" content="A private, rank-aware digital partner for public safety professionals. Peer support and professional development built by people who understand the weight of the badge.">
+<meta name="twitter:image" content="https://leadershift.app/images/og-image.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -160,6 +174,7 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
     transition: transform 0.4s ease;
   }
   .nav-links.open { transform: translateY(0); }
+  .nav-links a { padding: 0.75rem 0; display: block; }
 }
 
 /* ====================== PAGE SECTIONS ====================== */
@@ -262,6 +277,7 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
   text-decoration: none;
 }
 .btn-secondary:hover { border-color: var(--warm-bronze); background: var(--warm-bronze-glow); }
+.app-store-badge:hover { border-color: var(--warm-bronze) !important; background: var(--warm-bronze-glow) !important; }
 .hero-pricing {
   margin-top: 1.5rem;
   font-size: 0.8rem;
@@ -420,7 +436,8 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
 
 .demo-phone { display: flex; justify-content: center; }
 .phone-frame {
-  width: 280px;
+  max-width: 280px;
+  width: 100%;
   background: var(--deep-slate);
   border-radius: 32px;
   padding: 12px;
@@ -491,7 +508,7 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
   .ai-callout-layout { grid-template-columns: 1fr; gap: 2rem; }
 }
 .ai-callout-problem h3 {
-  font-family: var(--heading);
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   color: #e74c3c;
   margin-bottom: 1rem;
@@ -503,7 +520,7 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
   margin-bottom: 0.75rem;
 }
 .ai-callout-solution h3 {
-  font-family: var(--heading);
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   color: var(--warm-bronze);
   margin-bottom: 1rem;
@@ -515,7 +532,7 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
   margin-bottom: 0.75rem;
 }
 .ai-callout-label {
-  font-family: var(--body);
+  font-family: 'Outfit', sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -1000,12 +1017,32 @@ footer {
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem 2rem;
+  flex-wrap: wrap;
   margin-bottom: 1.5rem;
 }
-.footer-links a { font-size: 0.8rem; color: var(--text-muted); }
+.footer-links a { font-size: 0.8rem; color: var(--text-muted); padding: 0.4rem 0; }
 .footer-links a:hover { color: var(--warm-bronze); }
 .footer-copy { font-size: 0.75rem; color: rgba(138, 154, 170, 0.5); }
+
+/* ====================== MOBILE REFINEMENTS ====================== */
+@media (max-width: 768px) {
+  .trust-section,
+  .problem-section,
+  .demo-section,
+  .capabilities-section,
+  .impact-section,
+  .faq-section,
+  .cta-section { padding: 4rem 0; }
+  .ai-callout-section { padding: 3.5rem 0; }
+  .quote-section { padding: 3.5rem 0; }
+  .const-hero,
+  .founders-hero { padding: 120px 0 60px; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 1.25rem; }
+  .impact-stats { grid-template-columns: 1fr; }
+}
 
 /* ====================== ANIMATIONS ====================== */
 @keyframes fadeUp {
@@ -1629,7 +1666,7 @@ footer {
       <a href="#" onclick="navigateTo('founders'); return false;">About</a>
       <a href="mailto:support@leadershift.app">Contact</a>
     </div>
-    <div class="footer-copy">&copy; 2026 LeaderShift &middot; <a href="#">Terms</a> &middot; <a href="#">Privacy Policy</a></div>
+    <div class="footer-copy">&copy; 2026 LeaderShift &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy Policy</a></div>
   </div>
 </footer>
 
