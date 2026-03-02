@@ -629,12 +629,14 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
   padding: 6rem 0;
   border-top: 1px solid var(--border-subtle);
 }
-.faq-header { max-width: 600px; margin-bottom: 3rem; }
+.faq-header { max-width: 800px; margin: 0 auto 3rem; }
 .faq-header p { color: var(--text-muted); margin-top: 0.75rem; }
 .faq-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 .faq-item {
   border: 1px solid var(--border-subtle);
@@ -677,7 +679,6 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
   line-height: 1.7;
 }
 
-@media (max-width: 768px) { .faq-grid { grid-template-columns: 1fr; } }
 
 /* ====================== CTA ====================== */
 .cta-section {
@@ -1355,6 +1356,7 @@ footer {
           <div class="faq-answer"><div class="faq-answer-inner">LeaderShift is currently available for iPhone and iPad (iOS 15.0+). Android is coming soon. We recommend using your personal device rather than department-issued equipment to ensure your conversations remain entirely under your control.</div></div>
         </div>
       </div>
+      <p class="reveal" style="text-align:center;margin-top:2.5rem;font-size:0.95rem;color:var(--text-muted);">Still have questions? <a href="mailto:support@leadershift.app">Reach out to us.</a></p>
     </div>
   </section>
 
@@ -1539,6 +1541,7 @@ footer {
           </div>
         </div>
       </div>
+      <p class="reveal" style="text-align:center;margin-top:3rem;font-size:0.95rem;color:var(--text-muted);">Want to learn more or explore a partnership? <a href="mailto:support@leadershift.app">Get in touch.</a></p>
 
     </div>
   </section>
