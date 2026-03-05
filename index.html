@@ -1201,6 +1201,22 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
 .principle-preview-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
 @media (max-width: 768px) { .principles-preview-grid { grid-template-columns: 1fr; } }
 
+/* Founder credibility signal */
+.founders-signal {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+.founders-signal p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.founders-signal strong {
+  color: var(--warm-stone);
+}
+
 </style>
 </head>
 <body>
@@ -1321,56 +1337,12 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
     </div>
   </section>
 
-  <!-- PROBLEM SECTION — reframed -->
-  <section class="problem-section">
+  <!-- FOUNDER CREDIBILITY -->
+  <div class="founders-signal reveal">
     <div class="container">
-      <p class="section-label reveal"><span data-journey="sworn">The Realities Behind the Badge</span><span data-journey="nonsworn">The Realities Behind the Role</span></p>
-      <h2 class="reveal">Your world is different. Your tools should be, too.</h2>
-      <div class="problem-grid">
-        <div class="problem-card reveal">
-          <div class="problem-number">01</div>
-          <h3>No Playbook for This</h3>
-          <p data-journey="sworn">The decisions you face do not fit generic frameworks. Rank dynamics, department culture, community expectations, and the authority you carry require guidance built for your profession.</p>
-          <p data-journey="nonsworn">The decisions you face do not fit generic frameworks. Organizational dynamics, department culture, agency expectations, and the complexity you navigate require guidance built for your role in public safety.</p>
-        </div>
-        <div class="problem-card reveal">
-          <div class="problem-number">02</div>
-          <h3>The Cost of Asking for Help</h3>
-          <p>In public safety culture, showing uncertainty can carry real career consequences. Asking for guidance should not mean exposing yourself politically. LeaderShift exists because development requires a space where honest reflection carries no professional risk.</p>
-        </div>
-        <div class="problem-card reveal">
-          <div class="problem-number">03</div>
-          <h3>Available When the Moment Calls</h3>
-          <p>Your development should not wait for a scheduled appointment or depend on someone else's availability. The moments that define careers do not follow a calendar.</p>
-        </div>
-      </div>
+      <p>Founded by <strong>Kevin Magnan</strong>, a former sworn officer who ran a statewide crime lab, and <strong>Eric Lohela</strong>, with twenty years in government consulting and partnerships with agencies from Michigan State Police to LAPD. Advised by former senior Department of Justice officials and retired police executives.</p>
     </div>
-  </section>
-
-  <!-- PRINCIPLES PREVIEW -->
-  <section class="principles-preview">
-    <div class="container">
-      <h2 class="reveal">Three Principles. <em>No Compromises.</em></h2>
-      <p class="reveal" style="color:var(--text-muted);font-size:1.05rem;max-width:640px;">Three pillars govern every interaction, every design decision, and every boundary we maintain.</p>
-      <div class="principles-preview-grid">
-        <a href="#" class="principle-preview-card reveal" onclick="scrollToPillar('pillar-private'); return false;">
-          <div class="trust-icon">&#9670;</div>
-          <h3>Private</h3>
-          <p>Your conversations are never logged and you are never identified. Privacy is not a feature. It is the foundation.</p>
-        </a>
-        <a href="#" class="principle-preview-card reveal" onclick="scrollToPillar('pillar-honest'); return false;">
-          <div class="trust-icon">&#9672;</div>
-          <h3>Honest</h3>
-          <p>Direct feedback when your approach has blind spots. Honesty without empathy is cruelty. We practice both together.</p>
-        </a>
-        <a href="#" class="principle-preview-card reveal" onclick="scrollToPillar('pillar-useful'); return false;">
-          <div class="trust-icon">&#9635;</div>
-          <h3>Useful</h3>
-          <p>Industry-specific guidance built for real-world scenarios. Actionable next steps, not abstract wisdom.</p>
-        </a>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- PRODUCT DEMO -->
   <section class="demo-section">
@@ -1435,6 +1407,72 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
     </div>
   </section>
 
+  <!-- AI DIFFERENTIATION CALLOUT -->
+  <section class="ai-callout-section">
+    <div class="container">
+      <h2 class="reveal" style="text-align:center;">Generic AI fails public safety professionals.</h2>
+      <div class="ai-comparison reveal">
+        <div class="ai-comparison-card">
+          <span class="ai-comparison-label chatgpt">Generic AI Response</span>
+          <h4 data-journey="sworn">A Sergeant asks how to handle a Lieutenant who undermines them</h4>
+          <h4 data-journey="nonsworn">A supervisor asks how to advocate during a reorganization</h4>
+          <p data-journey="sworn">Generic advice about "open communication" and "setting clear expectations" with no awareness of rank dynamics, department culture, or chain of command implications.</p>
+          <p data-journey="nonsworn">Generic advice about "open communication" and "setting clear expectations" with no awareness of agency structure, reporting lines, or organizational politics.</p>
+        </div>
+        <div class="ai-comparison-card leadershift">
+          <span class="ai-comparison-label leadershift">LeaderShift Response</span>
+          <h4 data-journey="sworn">LeaderShift understands the rank dynamics</h4>
+          <h4 data-journey="nonsworn">LeaderShift understands the organizational stakes</h4>
+          <p data-journey="sworn">Context-aware guidance that considers your rank, your department's culture, chain of command, and the specific professional stakes involved in the situation.</p>
+          <p data-journey="nonsworn">Context-aware guidance that considers your role, your agency's structure, organizational hierarchy, and the specific professional stakes involved in the situation.</p>
+        </div>
+      </div>
+      <div class="ai-callout-layout">
+        <div class="ai-callout-problem reveal">
+          <h3>We Tested the Alternatives.</h3>
+          <p>We put real public safety scenarios through ChatGPT, Gemini, and other consumer AI tools. The results were dangerous.</p>
+          <p data-journey="sworn">Generic AI suggested approaches that would violate department policy. It gave advice that ignored chain of command. It recommended actions that could compromise officer safety or constitutional policing standards. In one test, it provided guidance that could be construed as encouraging evidence tampering.</p>
+          <p data-journey="nonsworn">Generic AI suggested approaches that ignored department policy. It gave advice that missed organizational hierarchy and reporting structures. It recommended actions without understanding how decisions flow through a public safety agency or the compliance standards your work depends on.</p>
+          <p>These tools were not built for your world. They do not understand the consequences of getting it wrong.</p>
+        </div>
+        <div class="ai-callout-solution reveal">
+          <h3>LeaderShift Was Built for It.</h3>
+          <p data-journey="sworn">Every response is grounded in the realities of public safety: rank dynamics, policy constraints, liability awareness, and the professional standards your career depends on.</p>
+          <p data-journey="nonsworn">Every response is grounded in the realities of public safety: organizational dynamics, policy constraints, compliance requirements, and the professional standards your career depends on.</p>
+          <p data-journey="sworn">LeaderShift does not guess at your context. It understands the difference between a patrol officer navigating a new supervisor and a lieutenant managing up to a chief. It knows what matters in your world because the people who built it lived in that world.</p>
+          <p data-journey="nonsworn">LeaderShift does not guess at your context. It understands the difference between a new analyst preparing their first briefing and a division director navigating agency-wide change. It knows what matters in your world because the people who built it lived in that world.</p>
+          <p><span data-journey="sworn">This is not generic AI with a police skin.</span><span data-journey="nonsworn">This is not generic AI with a public safety label.</span> This is specialized intelligence purpose-built for the profession.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION -->
+  <section class="problem-section">
+    <div class="container">
+      <p class="section-label reveal"><span data-journey="sworn">The Realities Behind the Badge</span><span data-journey="nonsworn">The Realities Behind the Role</span></p>
+      <h2 class="reveal">Your world is different. Your tools should be, too.</h2>
+      <div class="problem-grid">
+        <div class="problem-card reveal">
+          <div class="problem-number">01</div>
+          <h3>No Playbook for This</h3>
+          <p data-journey="sworn">The decisions you face do not fit generic frameworks. Rank dynamics, department culture, community expectations, and the authority you carry require guidance built for your profession.</p>
+          <p data-journey="nonsworn">The decisions you face do not fit generic frameworks. Organizational dynamics, department culture, agency expectations, and the complexity you navigate require guidance built for your role in public safety.</p>
+        </div>
+        <div class="problem-card reveal">
+          <div class="problem-number">02</div>
+          <h3>The Cost of Asking for Help</h3>
+          <p>In public safety culture, showing uncertainty can carry real career consequences. Asking for guidance should not mean exposing yourself politically. LeaderShift exists because development requires a space where honest reflection carries no professional risk.</p>
+        </div>
+        <div class="problem-card reveal">
+          <div class="problem-number">03</div>
+          <h3>Available When the Moment Calls</h3>
+          <p>Your development should not wait for a scheduled appointment or depend on someone else's availability. The moments that define careers do not follow a calendar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CAPABILITIES -->
   <section class="capabilities-section">
     <div class="container">
@@ -1478,42 +1516,27 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
     </div>
   </section>
 
-  <!-- AI DIFFERENTIATION CALLOUT -->
-  <section class="ai-callout-section">
+  <!-- PRINCIPLES PREVIEW -->
+  <section class="principles-preview">
     <div class="container">
-      <h2 class="reveal" style="text-align:center;">Generic AI fails public safety professionals.</h2>
-      <div class="ai-comparison reveal">
-        <div class="ai-comparison-card">
-          <span class="ai-comparison-label chatgpt">Generic AI Response</span>
-          <h4 data-journey="sworn">A Sergeant asks how to handle a Lieutenant who undermines them</h4>
-          <h4 data-journey="nonsworn">A supervisor asks how to advocate during a reorganization</h4>
-          <p data-journey="sworn">Generic advice about "open communication" and "setting clear expectations" with no awareness of rank dynamics, department culture, or chain of command implications.</p>
-          <p data-journey="nonsworn">Generic advice about "open communication" and "setting clear expectations" with no awareness of agency structure, reporting lines, or organizational politics.</p>
-        </div>
-        <div class="ai-comparison-card leadershift">
-          <span class="ai-comparison-label leadershift">LeaderShift Response</span>
-          <h4 data-journey="sworn">LeaderShift understands the rank dynamics</h4>
-          <h4 data-journey="nonsworn">LeaderShift understands the organizational stakes</h4>
-          <p data-journey="sworn">Context-aware guidance that considers your rank, your department's culture, chain of command, and the specific professional stakes involved in the situation.</p>
-          <p data-journey="nonsworn">Context-aware guidance that considers your role, your agency's structure, organizational hierarchy, and the specific professional stakes involved in the situation.</p>
-        </div>
-      </div>
-      <div class="ai-callout-layout">
-        <div class="ai-callout-problem reveal">
-          <h3>We Tested the Alternatives.</h3>
-          <p>We put real public safety scenarios through ChatGPT, Gemini, and other consumer AI tools. The results were dangerous.</p>
-          <p data-journey="sworn">Generic AI suggested approaches that would violate department policy. It gave advice that ignored chain of command. It recommended actions that could compromise officer safety or constitutional policing standards. In one test, it provided guidance that could be construed as encouraging evidence tampering.</p>
-          <p data-journey="nonsworn">Generic AI suggested approaches that ignored department policy. It gave advice that missed organizational hierarchy and reporting structures. It recommended actions without understanding how decisions flow through a public safety agency or the compliance standards your work depends on.</p>
-          <p>These tools were not built for your world. They do not understand the consequences of getting it wrong.</p>
-        </div>
-        <div class="ai-callout-solution reveal">
-          <h3>LeaderShift Was Built for It.</h3>
-          <p data-journey="sworn">Every response is grounded in the realities of public safety: rank dynamics, policy constraints, liability awareness, and the professional standards your career depends on.</p>
-          <p data-journey="nonsworn">Every response is grounded in the realities of public safety: organizational dynamics, policy constraints, compliance requirements, and the professional standards your career depends on.</p>
-          <p data-journey="sworn">LeaderShift does not guess at your context. It understands the difference between a patrol officer navigating a new supervisor and a lieutenant managing up to a chief. It knows what matters in your world because the people who built it lived in that world.</p>
-          <p data-journey="nonsworn">LeaderShift does not guess at your context. It understands the difference between a new analyst preparing their first briefing and a division director navigating agency-wide change. It knows what matters in your world because the people who built it lived in that world.</p>
-          <p><span data-journey="sworn">This is not generic AI with a police skin.</span><span data-journey="nonsworn">This is not generic AI with a public safety label.</span> This is specialized intelligence purpose-built for the profession.</p>
-        </div>
+      <h2 class="reveal">Three Principles. <em>No Compromises.</em></h2>
+      <p class="reveal" style="color:var(--text-muted);font-size:1.05rem;max-width:640px;">Three pillars govern every interaction, every design decision, and every boundary we maintain.</p>
+      <div class="principles-preview-grid">
+        <a href="#" class="principle-preview-card reveal" onclick="scrollToPillar('pillar-private'); return false;">
+          <div class="trust-icon">&#9670;</div>
+          <h3>Private</h3>
+          <p>Your conversations are never logged and you are never identified. Privacy is not a feature. It is the foundation.</p>
+        </a>
+        <a href="#" class="principle-preview-card reveal" onclick="scrollToPillar('pillar-honest'); return false;">
+          <div class="trust-icon">&#9672;</div>
+          <h3>Honest</h3>
+          <p>Direct feedback when your approach has blind spots. Honesty without empathy is cruelty. We practice both together.</p>
+        </a>
+        <a href="#" class="principle-preview-card reveal" onclick="scrollToPillar('pillar-useful'); return false;">
+          <div class="trust-icon">&#9635;</div>
+          <h3>Useful</h3>
+          <p>Industry-specific guidance built for real-world scenarios. Actionable next steps, not abstract wisdom.</p>
+        </a>
       </div>
     </div>
   </section>
