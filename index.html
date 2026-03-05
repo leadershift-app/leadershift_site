@@ -369,7 +369,7 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
 }
 .problem-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -525,7 +525,7 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
 .capabilities-header p { color: var(--text-muted); margin-top: 0.75rem; font-size: 1.05rem; }
 .capabilities-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 .capability-card {
@@ -540,8 +540,7 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
 .capability-card h3 { font-size: 1.15rem; margin-bottom: 0.75rem; }
 .capability-card p { font-size: 0.88rem; color: var(--text-muted); }
 
-@media (max-width: 768px) { .capabilities-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .capabilities-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .capabilities-grid { grid-template-columns: 1fr; } }
 
 /* ====================== COMMUNITY IMPACT ====================== */
 .impact-section {
@@ -568,7 +567,7 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
 .impact-content p { font-size: 1.05rem; color: var(--text-body); margin-bottom: 1.25rem; max-width: 560px; }
 .impact-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
 .impact-stat {
@@ -1023,6 +1022,14 @@ footer {
   .impact-stats { grid-template-columns: 1fr; }
 }
 
+/* ====================== FOCUS-VISIBLE ====================== */
+a:focus-visible,
+button:focus-visible,
+.scenario:focus-visible,
+.principle-preview-card:focus-visible,
+.gateway-card:focus-visible { outline: 2px solid var(--warm-bronze); outline-offset: 2px; }
+.faq-question:focus-visible { outline: 2px solid var(--warm-bronze); outline-offset: -2px; }
+
 /* ====================== ANIMATIONS ====================== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -1110,7 +1117,7 @@ body.journey-nonsworn [data-journey="sworn"] { display: none !important; }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.3rem 0.8rem;
+  padding: 0.5rem 1rem;
   background: rgba(176, 141, 87, 0.08);
   border: 1px solid var(--border-subtle);
   border-radius: 100px;
@@ -1356,42 +1363,32 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
             <div class="scenario reveal" data-journey="sworn" data-screenshot="images/peer-support-screenshot.png" onclick="activateScenario(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();activateScenario(this);}">
               <p class="scenario-rank">Patrol Officer</p>
               <h4>Considering First Promotion</h4>
-              <p>Weighing whether to go for Sergeant, what the board actually looks for, and how to build the case when you are ready.</p>
+              <p>Deciding whether to go for Sergeant and what the board actually looks for.</p>
             </div>
             <div class="scenario reveal" data-journey="sworn" data-screenshot="images/peer-support-screenshot.png" onclick="activateScenario(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();activateScenario(this);}">
               <p class="scenario-rank">Sergeant</p>
               <h4>Passed Over for Promotion</h4>
-              <p>Navigate the personal and professional dimensions of being told "we went another direction" without clear feedback.</p>
-            </div>
-            <div class="scenario reveal" data-journey="sworn" data-screenshot="images/peer-support-screenshot.png" onclick="activateScenario(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();activateScenario(this);}">
-              <p class="scenario-rank">Lieutenant</p>
-              <h4>Managing Up</h4>
-              <p>Build strategies for navigating command staff whose priorities conflict with operational reality on the ground.</p>
+              <p>Processing "we went another direction" and planning your next move.</p>
             </div>
             <div class="scenario reveal" data-journey="sworn" data-screenshot="images/peer-support-screenshot.png" onclick="activateScenario(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();activateScenario(this);}">
               <p class="scenario-rank">Captain</p>
               <h4>Media-Facing Crisis</h4>
-              <p>Prepare for press conferences, council meetings, and public accountability moments with confidence and clarity.</p>
+              <p>Preparing for press conferences, council meetings, and public accountability moments.</p>
             </div>
             <div class="scenario reveal" data-journey="nonsworn" data-screenshot="images/peer-support-screenshot.png" onclick="activateScenario(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();activateScenario(this);}">
               <p class="scenario-rank">Crime Analyst</p>
               <h4>Presenting to Command Staff</h4>
-              <p>Prepare to brief sworn leadership on your analysis when the stakes are high and the audience speaks a different professional language.</p>
+              <p>Briefing sworn leadership when the stakes are high and the audience speaks a different professional language.</p>
             </div>
             <div class="scenario reveal" data-journey="nonsworn" data-screenshot="images/peer-support-screenshot.png" onclick="activateScenario(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();activateScenario(this);}">
               <p class="scenario-rank">Records Supervisor</p>
               <h4>Navigating a Reorganization</h4>
-              <p>Your unit is being restructured under a new division. Think through how to advocate for your team when the decision-makers do not fully understand what you do.</p>
-            </div>
-            <div class="scenario reveal" data-journey="nonsworn" data-screenshot="images/peer-support-screenshot.png" onclick="activateScenario(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();activateScenario(this);}">
-              <p class="scenario-rank">IT Manager</p>
-              <h4>Building Credibility with Sworn Staff</h4>
-              <p>Develop strategies for earning trust and influence when your expertise is technical but the culture values operational experience.</p>
+              <p>Advocating for your team when decision-makers do not fully understand what you do.</p>
             </div>
             <div class="scenario reveal" data-journey="nonsworn" data-screenshot="images/peer-support-screenshot.png" onclick="activateScenario(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();activateScenario(this);}">
               <p class="scenario-rank">Civilian Division Director</p>
               <h4>Leading Without Rank</h4>
-              <p>Navigate the dynamics of managing across an organization where authority comes from competence and relationships, not a badge number or chain of command.</p>
+              <p>Managing across an organization where authority comes from competence, not rank.</p>
             </div>
           </div>
         </div>
@@ -1430,18 +1427,11 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
       <div class="ai-callout-layout">
         <div class="ai-callout-problem reveal">
           <h3>We Tested the Alternatives.</h3>
-          <p>We put real public safety scenarios through ChatGPT, Gemini, and other consumer AI tools. The results were dangerous.</p>
-          <p data-journey="sworn">Generic AI suggested approaches that would violate department policy. It gave advice that ignored chain of command. It recommended actions that could compromise officer safety or constitutional policing standards. In one test, it provided guidance that could be construed as encouraging evidence tampering.</p>
-          <p data-journey="nonsworn">Generic AI suggested approaches that ignored department policy. It gave advice that missed organizational hierarchy and reporting structures. It recommended actions without understanding how decisions flow through a public safety agency or the compliance standards your work depends on.</p>
-          <p>These tools were not built for your world. They do not understand the consequences of getting it wrong.</p>
+          <p>We put real public safety scenarios through ChatGPT, Gemini, and other consumer AI tools. They recommended approaches that violated policy, ignored chain of command, and missed the consequences of getting it wrong.</p>
         </div>
         <div class="ai-callout-solution reveal">
           <h3>LeaderShift Was Built for It.</h3>
-          <p data-journey="sworn">Every response is grounded in the realities of public safety: rank dynamics, policy constraints, liability awareness, and the professional standards your career depends on.</p>
-          <p data-journey="nonsworn">Every response is grounded in the realities of public safety: organizational dynamics, policy constraints, compliance requirements, and the professional standards your career depends on.</p>
-          <p data-journey="sworn">LeaderShift does not guess at your context. It understands the difference between a patrol officer navigating a new supervisor and a lieutenant managing up to a chief. It knows what matters in your world because the people who built it lived in that world.</p>
-          <p data-journey="nonsworn">LeaderShift does not guess at your context. It understands the difference between a new analyst preparing their first briefing and a division director navigating agency-wide change. It knows what matters in your world because the people who built it lived in that world.</p>
-          <p><span data-journey="sworn">This is not generic AI with a police skin.</span><span data-journey="nonsworn">This is not generic AI with a public safety label.</span> This is specialized intelligence purpose-built for the profession.</p>
+          <p>Every response is grounded in rank dynamics, policy constraints, and the professional standards your career depends on. Built by people who lived in your world, not engineers guessing at it.</p>
         </div>
       </div>
     </div>
@@ -1456,18 +1446,13 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
         <div class="problem-card reveal">
           <div class="problem-number">01</div>
           <h3>No Playbook for This</h3>
-          <p data-journey="sworn">The decisions you face do not fit generic frameworks. Rank dynamics, department culture, community expectations, and the authority you carry require guidance built for your profession.</p>
-          <p data-journey="nonsworn">The decisions you face do not fit generic frameworks. Organizational dynamics, department culture, agency expectations, and the complexity you navigate require guidance built for your role in public safety.</p>
+          <p data-journey="sworn">Rank dynamics, department culture, and the authority you carry require guidance built for the profession.</p>
+          <p data-journey="nonsworn">Organizational dynamics, department culture, and agency expectations require guidance built for your role in public safety.</p>
         </div>
         <div class="problem-card reveal">
           <div class="problem-number">02</div>
           <h3>The Cost of Asking for Help</h3>
-          <p>In public safety culture, showing uncertainty can carry real career consequences. Asking for guidance should not mean exposing yourself politically. LeaderShift exists because development requires a space where honest reflection carries no professional risk.</p>
-        </div>
-        <div class="problem-card reveal">
-          <div class="problem-number">03</div>
-          <h3>Available When the Moment Calls</h3>
-          <p>Your development should not wait for a scheduled appointment or depend on someone else's availability. The moments that define careers do not follow a calendar.</p>
+          <p>Showing uncertainty can carry real career consequences. Development requires a space where honest reflection carries no professional risk.</p>
         </div>
       </div>
     </div>
@@ -1485,32 +1470,22 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
         <div class="capability-card reveal">
           <div class="capability-icon">&#9670;</div>
           <h3>Career Navigation</h3>
-          <p>Whether you are weighing your first promotion or planning your path to command, LeaderShift helps you think through the strategy, the preparation, and the timing. Calibrated to your rank and experience.</p>
+          <p>Think through promotion strategy, preparation, and timing, calibrated to your rank and experience.</p>
         </div>
         <div class="capability-card reveal">
           <div class="capability-icon">&#9672;</div>
           <h3>Decision Support</h3>
-          <p>The challenging situation at work that does not have a clean answer. The conversation with a superior you need to get right. The organizational challenge no textbook prepared you for. Think it through with a digital partner that understands the context.</p>
+          <p>Work through the tough conversation, the organizational challenge, or the decision no textbook prepared you for.</p>
         </div>
         <div class="capability-card reveal">
           <div class="capability-icon">&#9635;</div>
           <h3>Leadership Growth</h3>
-          <p>The skills that separate effective leaders from everyone else at every rank. Communication, conflict resolution, team dynamics, and the self-awareness to keep growing after the promotion is earned.</p>
-        </div>
-        <div class="capability-card reveal">
-          <div class="capability-icon">&#9678;</div>
-          <h3>Daily Resilience</h3>
-          <p>Stress management, work-life integration, and the honest self-reflection that keeps you sharp. Built into your routine, not a separate appointment.</p>
+          <p>Communication, conflict resolution, team dynamics, and the self-awareness to keep growing at every rank.</p>
         </div>
         <div class="capability-card reveal">
           <div class="capability-icon">&#9674;</div>
           <h3>Adapts to You</h3>
-          <p>LeaderShift remembers your goals, challenges, and where you are in your career. The more you use it, the more relevant it becomes.</p>
-        </div>
-        <div class="capability-card reveal">
-          <div class="capability-icon">&#9830;</div>
-          <h3>Independent</h3>
-          <p>Not affiliated with any department, agency, or union. That independence means our only obligation is to you.</p>
+          <p>Remembers your goals and career context. The more you use it, the more relevant it becomes.</p>
         </div>
       </div>
     </div>
@@ -1548,31 +1523,24 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
         <div class="impact-content reveal">
           <h2 data-journey="sworn">Supporting officers strengthens <em>everyone.</em></h2>
           <h2 data-journey="nonsworn">Supporting public safety professionals strengthens <em>everyone.</em></h2>
-          <p data-journey="sworn">Better leaders serve their communities better. LeaderShift gives you the tools to sharpen that work on your own terms.</p>
-          <p data-journey="sworn">Officers who invest in their leadership communicate more effectively, stay resilient under pressure, and manage the stress of the job. Better leaders make everyone safer.</p>
-          <p data-journey="nonsworn">Stronger professionals make every agency stronger. LeaderShift gives you the tools to develop your leadership on your own terms.</p>
-          <p data-journey="nonsworn">Professionals who invest in their development communicate more effectively, navigate organizational challenges with confidence, and bring clarity to every interaction. The mission gets stronger as a result.</p>
+          <p data-journey="sworn">Officers who invest in their leadership communicate more effectively, stay resilient under pressure, and make everyone safer.</p>
+          <p data-journey="nonsworn">Professionals who invest in their development communicate more effectively, navigate organizational challenges with confidence, and strengthen the mission.</p>
         </div>
         <div class="impact-stats reveal">
           <div class="impact-stat">
             <div class="stat-icon">&#9670;</div>
             <h4>Sharper Under Pressure</h4>
-            <p>Leadership is a muscle. The more you work it, the more thoughtful your decisions become when the pressure is on.</p>
+            <p>The more you work the leadership muscle, the sharper your decisions become under pressure.</p>
           </div>
           <div class="impact-stat">
             <div class="stat-icon">&#9672;</div>
             <h4>Institutional Knowledge</h4>
-            <p><span data-journey="sworn">Experienced officers</span><span data-journey="nonsworn">Experienced professionals</span> who feel supported stay in the profession longer, keeping hard-earned expertise where it is needed.</p>
+            <p>Supported <span data-journey="sworn">officers</span><span data-journey="nonsworn">professionals</span> stay longer, keeping hard-earned expertise where it is needed.</p>
           </div>
           <div class="impact-stat">
             <div class="stat-icon">&#9635;</div>
             <h4>Stronger Connections</h4>
-            <p>Leaders who grow build stronger relationships within their teams and with the communities they serve.</p>
-          </div>
-          <div class="impact-stat">
-            <div class="stat-icon">&#9678;</div>
-            <h4>The Ripple Effect</h4>
-            <p>One <span data-journey="sworn">officer's</span><span data-journey="nonsworn">professional's</span> growth influences their team, their peers, and every interaction that follows.</p>
+            <p>Leaders who grow build stronger teams and stronger community relationships.</p>
           </div>
         </div>
       </div>
@@ -1601,10 +1569,6 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
           <div class="faq-answer"><div class="faq-answer-inner">No. This is the foundation of everything we built. Your conversations are never logged and you are never identified. We have no backdoors for administrators or agencies. There is no record for your department to access and nothing that can be subpoenaed through departmental channels. You can delete your data at any time and it is wiped completely. This is not a policy. It is how the system is architected.</div></div>
         </div>
         <div class="faq-item reveal">
-          <div class="faq-question" onclick="toggleFaq(this)">What is LeaderShift?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">LeaderShift is an AI-powered peer support and professional development tool built specifically for public safety professionals. It helps you navigate career progression, leadership challenges, and the daily realities of the job with guidance that understands rank structures, department culture, and the unique pressures you face.</div></div>
-        </div>
-        <div class="faq-item reveal">
           <div class="faq-question" onclick="toggleFaq(this)">Is this therapy?</div>
           <div class="faq-answer"><div class="faq-answer-inner">No. LeaderShift is a peer support and professional development tool, not licensed therapy. It focuses on career development, leadership skills, and navigating workplace challenges. If you are dealing with trauma, PTSD, or clinical issues, we encourage you to work with a licensed professional. Many people find professional development and clinical care complement each other well.</div></div>
         </div>
@@ -1617,28 +1581,12 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
           <div class="faq-answer"><div class="faq-answer-inner">We built LeaderShift because generic AI fails public safety professionals. Our testing showed tools like ChatGPT routinely give advice that ignores policy, misses organizational hierarchy, or overlooks compliance considerations. LeaderShift understands organizational dynamics, how a division director's challenges differ from those of a new analyst, and the specific realities of working in a public safety environment. We speak to professionals, not about them.</div></div>
         </div>
         <div class="faq-item reveal" data-journey="sworn">
-          <div class="faq-question" onclick="toggleFaq(this)">Will using this affect my fitness-for-duty status?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">No. LeaderShift is a professional development tool. Using it is no different from reading a leadership book or attending a conference. It does not create clinical records, and since your department has no access to your conversations, your use cannot be factored into fitness-for-duty evaluations or affect your career standing.</div></div>
-        </div>
-        <div class="faq-item reveal" data-journey="nonsworn">
-          <div class="faq-question" onclick="toggleFaq(this)">Will my employer or agency know I'm using this?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">No. LeaderShift is a personal professional development tool. Using it is no different from reading a leadership book or attending a conference on your own time. Your agency has no access to your conversations, and your use leaves no trace in any workplace system.</div></div>
-        </div>
-        <div class="faq-item reveal" data-journey="sworn">
           <div class="faq-question" onclick="toggleFaq(this)">I'm a patrol officer, not a supervisor. Is this for me?</div>
           <div class="faq-answer"><div class="faq-answer-inner">Yes. Leadership development does not start at promotion. Some of the most consequential career decisions happen at the patrol level: whether to go for Sergeant, how to handle a difficult FTO relationship, how to build the skills that promotion boards actually look for, and how to stay motivated when the job gets heavy. LeaderShift meets you where you are.</div></div>
         </div>
         <div class="faq-item reveal" data-journey="nonsworn">
           <div class="faq-question" onclick="toggleFaq(this)">I'm not in a management role. Is this for me?</div>
           <div class="faq-answer"><div class="faq-answer-inner">Yes. Professional development does not start at a supervisory title. Some of the most consequential career decisions happen when you are in individual contributor roles: how to build influence without positional authority, how to navigate organizational politics, how to advocate for your unit during reorganizations, and how to position yourself for advancement. LeaderShift meets you where you are.</div></div>
-        </div>
-        <div class="faq-item reveal" data-journey="sworn">
-          <div class="faq-question" onclick="toggleFaq(this)">How does LeaderShift benefit the communities officers serve?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">When public safety professionals invest in their own leadership development, the effects ripple outward. Better communication skills, more thoughtful decision-making, stronger self-awareness, and greater resilience under pressure all translate directly into how officers interact with the people they serve. Supporting the people who carry the badge is one of the most direct ways to strengthen public safety for everyone.</div></div>
-        </div>
-        <div class="faq-item reveal" data-journey="nonsworn">
-          <div class="faq-question" onclick="toggleFaq(this)">How does LeaderShift benefit the agencies professionals work in?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">When public safety professionals invest in their own development, the effects ripple through the entire organization. Better communication, more thoughtful decision-making, and greater resilience translate directly into how agencies operate. Supporting the professionals who keep agencies running is one of the most direct ways to strengthen public safety for everyone.</div></div>
         </div>
         <div class="faq-item reveal">
           <div class="faq-question" onclick="toggleFaq(this)">How much does it cost?</div>
@@ -1651,10 +1599,6 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
         <div class="faq-item reveal">
           <div class="faq-question" onclick="toggleFaq(this)">Who built this?</div>
           <div class="faq-answer"><div class="faq-answer-inner">LeaderShift was founded by Eric Lohela and Kevin Magnan. Eric brings twenty years in government consulting with a dedicated focus towards public safety since 2019, having worked with dozens of agencies from Michigan State Police to LAPD. Kevin is a former sworn officer with a Master's in data and analytics who ran a statewide crime lab before designing the AI technology behind LeaderShift. Our advisory team includes former senior Department of Justice officials, retired police executives, and members of leading academic research institutions. We are an independent company. That independence means our only obligation is to you.</div></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-question" onclick="toggleFaq(this)">Can my department purchase LeaderShift for our personnel?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">We are exploring institutional partnerships for agencies that want to support their people's professional development. If your department is interested, contact us at support@leadershift.app. Individual subscriptions remain completely private regardless of how they are funded.</div></div>
         </div>
         <div class="faq-item reveal">
           <div class="faq-question" onclick="toggleFaq(this)">What devices does LeaderShift work on?</div>
