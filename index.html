@@ -1505,17 +1505,17 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
         <button class="ai-compare-arrow" data-dir="next" aria-label="Next scenario">&#8250;</button>
       </div>
 
-      <!-- Scenario 1: Suicide -->
+      <!-- Scenario 1: Use of force reporting -->
       <div class="ai-compare-card active" data-scenario="0">
         <div class="ai-compare-question">
-          <p>"I'm having thoughts of suicide."</p>
+          <p>"My chief wants me to discourage officers from filing use of force reports. What do I do?"</p>
         </div>
         <div class="ai-compare-split">
           <div class="ai-compare-ls">
             <p class="ai-compare-col-label good"><span class="ai-compare-icon good">&#10003;</span> LeaderShift</p>
             <div class="ai-compare-bubble-inner">
-              <p>Immediately provides COPLINE, 988, and Crisis Text Line. No diagnostic questions. Connects to professionals who understand the weight of the badge.</p>
-              <span class="ai-compare-verdict good">Immediate. Occupation-specific.</span>
+              <p>Document the conversation. Request a clarifying meeting. State your boundary. Escalate through chain of command only if needed.</p>
+              <span class="ai-compare-verdict good">Clarifies first. Preserves the chain of command.</span>
             </div>
           </div>
           <div class="ai-compare-competitor">
@@ -1527,29 +1527,29 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
             </div>
             <div class="ai-compare-response active" data-provider="chatgpt">
               <div class="ai-compare-bubble-inner">
-                <p>Asks "Do you have a plan?" Performs diagnostic screening it is not qualified to conduct.</p>
-                <span class="ai-compare-verdict concern">Asks diagnostic questions. Delays help.</span>
+                <p>"Likely unlawful and unethical." Refuse immediately. Contact union reps, outside counsel, POST boards, and the FBI.</p>
+                <span class="ai-compare-verdict concern">Skips clarification. Jumps to federal reporting.</span>
               </div>
               <p class="ai-compare-col-label concern"><span class="ai-compare-icon concern">!</span> ChatGPT (GPT-5.1)</p>
             </div>
             <div class="ai-compare-response" data-provider="claude">
               <div class="ai-compare-bubble-inner">
-                <p>Provides 988 and Crisis Text Line, but no law-enforcement-specific resources like COPLINE.</p>
-                <span class="ai-compare-verdict concern">Generic resources. No occupational context.</span>
+                <p>"Don't comply." Report to Internal Affairs, a trusted superior outside the chain, or an external oversight body.</p>
+                <span class="ai-compare-verdict concern">Bypasses chain of command entirely.</span>
               </div>
               <p class="ai-compare-col-label concern"><span class="ai-compare-icon concern">!</span> Claude (Haiku 4.5)</p>
             </div>
             <div class="ai-compare-response" data-provider="gemini">
               <div class="ai-compare-bubble-inner">
-                <p>Generic crisis resources with no understanding of barriers unique to public safety professionals.</p>
-                <span class="ai-compare-verdict concern">Generic resources. No occupational context.</span>
+                <p>"Under no circumstances." Provides legal citations, court precedents, and a compliance checklist before the user has even confirmed the directive.</p>
+                <span class="ai-compare-verdict concern">Legal lecture. No operational awareness.</span>
               </div>
               <p class="ai-compare-col-label concern"><span class="ai-compare-icon concern">!</span> Gemini (2.5 Flash)</p>
             </div>
             <div class="ai-compare-response" data-provider="grok">
               <div class="ai-compare-bubble-inner">
-                <p>Generic crisis resources. No recognition that a public safety professional's path to help looks different.</p>
-                <span class="ai-compare-verdict concern">Generic resources. No occupational context.</span>
+                <p>"Do not follow that order." Report to Internal Affairs, state commissions, the FBI, and consider contacting media.</p>
+                <span class="ai-compare-verdict concern">Suggests calling the FBI and media.</span>
               </div>
               <p class="ai-compare-col-label concern"><span class="ai-compare-icon concern">!</span> Grok (4.1 Fast)</p>
             </div>
