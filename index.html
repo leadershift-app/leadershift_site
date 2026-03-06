@@ -716,81 +716,62 @@ nav.scrolled { background: rgba(17, 27, 34, 0.96); }
   line-height: 1.8;
 }
 
-.const-pillars { padding: 4rem 0 6rem; }
-.pillar {
+.const-pillars { padding: 3rem 0 5rem; }
+.pillars-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-  padding: 4rem 0;
-  border-top: 1px solid var(--border-subtle);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
 }
-.pillar:nth-child(even) { direction: rtl; }
-.pillar:nth-child(even) > * { direction: ltr; }
+.pillar {
+  padding: 2rem;
+  background: rgba(44, 62, 80, 0.12);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
 .pillar-number {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   color: rgba(176, 141, 87, 0.12);
   line-height: 1;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 .pillar-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--warm-bronze);
 }
 .pillar-statement {
-  font-size: 1.05rem;
+  font-size: 0.92rem;
   color: var(--text-body);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
 }
 .pillar-details h4 {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--warm-bronze);
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-bottom: 0.75rem;
 }
 .pillar-practice {
-  padding: 1rem 1.25rem;
-  background: rgba(44, 62, 80, 0.2);
+  padding: 0.75rem 1rem;
+  background: rgba(44, 62, 80, 0.25);
   border-left: 2px solid var(--warm-bronze);
   border-radius: 0 8px 8px 0;
-  margin-bottom: 0.75rem;
-  font-size: 0.88rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.82rem;
   color: var(--text-body);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 .pillar-practice strong { color: var(--off-white); font-weight: 500; }
-.pillar-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pillar-icon-large {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(176, 141, 87, 0.05);
-  border: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  color: var(--warm-bronze);
-}
 
 @media (max-width: 768px) {
-  .pillar { grid-template-columns: 1fr; }
-  .pillar:nth-child(even) { direction: ltr; }
-  .pillar-visual { display: none; }
+  .pillars-grid { grid-template-columns: 1fr; }
 }
 
 /* ====================== FOUNDERS PAGE ====================== */
@@ -1641,64 +1622,51 @@ body:not(.journey-sworn):not(.journey-nonsworn) .journey-switch { display: none;
 
   <section class="const-pillars">
     <div class="container">
+      <div class="pillars-grid">
 
-      <!-- PRIVATE -->
-      <div id="pillar-private" class="pillar reveal">
-        <div>
+        <!-- PRIVATE -->
+        <div id="pillar-private" class="pillar reveal">
           <div class="pillar-number">01</div>
           <div class="pillar-name">Private</div>
-          <p class="pillar-statement">Real professional growth requires honest self-reflection. And honest self-reflection requires knowing that what you say stays between you and the tool you are working with. In a profession defined by constant documentation and institutional scrutiny, privacy is not a feature. It is the foundation that makes everything else possible.</p>
+          <p class="pillar-statement">Honest self-reflection requires knowing that what you say stays between you and the tool. In a profession defined by documentation and institutional scrutiny, privacy is the foundation that makes everything else possible.</p>
           <div class="pillar-details">
             <h4>How This Shows Up</h4>
-            <div class="pillar-practice"><strong>No one sees your conversations.</strong> Your interactions with LeaderShift are never logged and you are never identified. There is no record for anyone to access. Not your department, not us, not anyone.</div>
-            <div class="pillar-practice"><strong>No departmental access.</strong> There are no backdoors, no admin portals, no data exports. Nothing can be subpoenaed through departmental channels because there is nothing to produce. This matters in an era where digital interactions increasingly live in discoverable systems.</div>
-            <div class="pillar-practice"><strong>Your data, your control.</strong> Delete it anytime and it is wiped completely. No approval process. No retention policies working against you. Using LeaderShift is no different from reading a leadership book on your own time.</div>
-            <div class="pillar-practice"><strong>Independent by design.</strong> We are not a department tool. We are a personal professional development platform. That distinction is structural and legal, not semantic. It is what allows us to serve your interests first.</div>
+            <div class="pillar-practice"><strong>No one sees your conversations.</strong> Your interactions are never logged and you are never identified. Not your department, not us, not anyone.</div>
+            <div class="pillar-practice"><strong>No departmental access.</strong> No backdoors, no admin portals, no data exports. Nothing can be subpoenaed because there is nothing to produce.</div>
+            <div class="pillar-practice"><strong>Your data, your control.</strong> Delete it anytime and it is wiped completely. No retention policies working against you.</div>
+            <div class="pillar-practice"><strong>Independent by design.</strong> We are a personal professional development platform, not a department tool. That distinction is structural and legal.</div>
           </div>
         </div>
-        <div class="pillar-visual">
-          <div class="pillar-icon-large">&#9670;</div>
-        </div>
-      </div>
 
-      <!-- HONEST -->
-      <div id="pillar-honest" class="pillar reveal">
-        <div>
+        <!-- HONEST -->
+        <div id="pillar-honest" class="pillar reveal">
           <div class="pillar-number">02</div>
           <div class="pillar-name">Honest</div>
-          <p class="pillar-statement">You do not need another tool that tells you what you want to hear. You need a tool that tells you what you need to hear, with the care and precision that helps you navigate a complex world. Honesty without empathy is cruelty. Empathy without honesty is cowardice. We practice both together.</p>
+          <p class="pillar-statement">You need a tool that tells you what you need to hear, with the care and precision to help you navigate a complex world. Honesty without empathy is cruelty. Empathy without honesty is cowardice. We practice both.</p>
           <div class="pillar-details">
             <h4>How This Shows Up</h4>
-            <div class="pillar-practice"><strong>Direct feedback.</strong> When your approach has blind spots, LeaderShift names them respectfully. A good digital partner does not let you walk into a promotion board underprepared because telling you felt uncomfortable.</div>
-            <div class="pillar-practice"><strong>Honest about limitations.</strong> LeaderShift will tell you what it does not know, what it cannot do, and when you need a human professional instead. We will never pretend to be therapy, legal counsel, or a substitute for clinical care.</div>
-            <div class="pillar-practice"><strong>No performance theater.</strong> We do not inflate your readiness, minimize real challenges, or offer false reassurance. The job is too serious for that.</div>
+            <div class="pillar-practice"><strong>Direct feedback.</strong> When your approach has blind spots, LeaderShift names them respectfully. A good digital partner does not let you walk into a promotion board underprepared.</div>
+            <div class="pillar-practice"><strong>Honest about limitations.</strong> LeaderShift will tell you what it cannot do and when you need a human professional instead. We will never pretend to be therapy or legal counsel.</div>
+            <div class="pillar-practice"><strong>No performance theater.</strong> We do not inflate your readiness, minimize real challenges, or offer false reassurance.</div>
             <div class="pillar-practice"><strong>Candor is kind.</strong> Withholding honest feedback is the unkind act. Every interaction is built on this principle.</div>
           </div>
         </div>
-        <div class="pillar-visual">
-          <div class="pillar-icon-large">&#9672;</div>
-        </div>
-      </div>
 
-      <!-- USEFUL -->
-      <div id="pillar-useful" class="pillar reveal">
-        <div>
+        <!-- USEFUL -->
+        <div id="pillar-useful" class="pillar reveal">
           <div class="pillar-number">03</div>
           <div class="pillar-name">Useful</div>
-          <p class="pillar-statement">Useful means industry-specific and built with guidance and feedback from patrol officers through executive leadership to manage the real-world scenarios you face on the job and when you take the day home.</p>
+          <p class="pillar-statement">Industry-specific guidance built with feedback from patrol officers through executive leadership to address the real scenarios you face on the job and when you take the day home.</p>
           <div class="pillar-details">
             <h4>How This Shows Up</h4>
-            <div class="pillar-practice"><strong>Context-aware guidance.</strong> LeaderShift knows that "time blocking" means something different when you work 12-hour rotating shifts with mandatory overtime and court appearances. Generic productivity advice does not survive first contact with the job.</div>
-            <div class="pillar-practice"><strong>Rank-calibrated.</strong> The guidance a patrol officer considering promotion needs is different from what a Captain preparing for a Chief's role needs. LeaderShift scales its depth, language, and framing to match where you are in your career.</div>
-            <div class="pillar-practice"><strong>Actionable, not theoretical.</strong> Every interaction aims to leave you with something you can do, say, prepare for, or think differently about. Practical next steps, not abstract wisdom.</div>
-            <div class="pillar-practice"><strong>Evolves with you.</strong> LeaderShift remembers your goals, your challenges, and where you left off. It uses a stable, clear approach that builds rapport over time, becoming more personalized the more you use it. And behind it, a team constantly working to make every conversation better.</div>
+            <div class="pillar-practice"><strong>Context-aware guidance.</strong> LeaderShift knows "time blocking" means something different on 12-hour rotating shifts with mandatory overtime. Generic advice does not survive first contact with the job.</div>
+            <div class="pillar-practice"><strong>Rank-calibrated.</strong> The guidance a patrol officer needs is different from what a Captain preparing for a Chief's role needs. LeaderShift scales to match where you are.</div>
+            <div class="pillar-practice"><strong>Actionable, not theoretical.</strong> Every interaction leaves you with something you can do, say, prepare for, or think differently about.</div>
+            <div class="pillar-practice"><strong>Evolves with you.</strong> LeaderShift remembers your goals and where you left off, becoming more personalized the more you use it.</div>
           </div>
         </div>
-        <div class="pillar-visual">
-          <div class="pillar-icon-large">&#9635;</div>
-        </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
