@@ -1946,13 +1946,15 @@ function observeElements() {
   document.querySelectorAll('.page.active .reveal').forEach(el => _revealObserver.observe(el));
 }
 
+var currentJourney = null;
+
 function selectJourney(journey) {
-  localStorage.setItem('leadershift_journey', journey);
   applyJourney(journey);
   navigateTo('home');
 }
 
 function applyJourney(journey) {
+  currentJourney = journey;
   document.body.classList.remove('journey-sworn', 'journey-nonsworn');
   document.body.classList.add('journey-' + journey);
   updateJourneyIndicator(journey);
@@ -1964,9 +1966,7 @@ function applyJourney(journey) {
 }
 
 function switchJourney() {
-  var current = localStorage.getItem('leadershift_journey') || 'sworn';
-  var next = current === 'sworn' ? 'nonsworn' : 'sworn';
-  localStorage.setItem('leadershift_journey', next);
+  var next = currentJourney === 'sworn' ? 'nonsworn' : 'sworn';
   applyJourney(next);
 }
 
@@ -2017,11 +2017,6 @@ window.addEventListener('scroll', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  var savedJourney = localStorage.getItem('leadershift_journey');
-  if (savedJourney) {
-    applyJourney(savedJourney);
-    navigateTo('home');
-  }
   observeElements();
 
   // FAQ keyboard accessibility + aria-expanded
