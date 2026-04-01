@@ -1281,7 +1281,8 @@ footer {
 
 /* ====================== JOURNEY SYSTEM ====================== */
 body.journey-sworn [data-journey="nonsworn"],
-body.journey-nonsworn [data-journey="sworn"] { display: none !important; }
+body.journey-nonsworn [data-journey="sworn"],
+body:not(.journey-nonsworn) [data-journey="nonsworn"] { display: none !important; }
 
 /* Gateway Page */
 .gateway-hero {
